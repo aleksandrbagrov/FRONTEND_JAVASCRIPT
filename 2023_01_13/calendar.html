@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+	<style>
+		body {
+			background: rgba(186, 193, 126, 0.577);
+		}
+		table {
+			background: #00000000;
+			width: 167px;
+			height: 152px;
+			border: initial;
+			text-align: center;
+			border-spacing: 0px;
+		}
+		caption {
+			background: linear-gradient(to bottom,rgb(70, 178, 40) 10%, rgb(113, 235, 73));
+			color: white;
+			height: 22px;
+			font-family: "Monaco", monospace;
+			font-weight: 100;
+		}
+		.box {
+      display: flex;
+      justify-content: center;
+      width: 167px;
+      height: 167px;
+      background-color: white;
+            /* align-items: start; - Nurodome, kad vidiniai elementai būtų vertikaliai lygiuojami į kairę pusę.
+            align-items: end; - Nurodome, kad vidiniai elementai būtų vertikaliailygiuojami į dešinę pusę.
+            align-items: center; - Nurodome, kad vidiniai elementai būtų vertikaliai centruojami. */
+      align-items: center;
+    }
+
+		.alignment {
+            /* margin-bottom: 3rem; */
+            /* display: flex savybė nurodo, jog viduje esantys elementai bus išpoziciuonuoti vienoje eilėje arba pagal flex parametrų taisykles */
+      display: flex;
+            /* justify-content: start; - Nurodome, kad vidiniai elementai būtų lygiuojami į kairę pusę.
+            justify-content: end; - Nurodome, kad vidiniai elementai būtų lygiuojami į dešinę pusę.
+            justify-content: center; - Nurodome, kad vidiniai elementai būtų centruojami.
+            justify-content: space-between; - pozicionuoja elementus prigludusius prie elemento kraštų.
+            justify-content: space-around; - pozicionuoja elementus atitrauktus nuo elemento kraštų.
+            justify-content: space-evenly; - pozicionuoja elementus su vienodais tarpais tarpusavyje.
+            justify-content veikia tik prijungus display: flex savybę 
+            */
+      justify-content: center;
+      gap: 1rem;
+    }
+		tr {
+			color:rgb(124, 122, 122)
+		}
+
+		tbody {
+			font-family: "Monaco", monospace;
+		}
+
+		.month {
+			font-size: 11px;
+		}
+
+		.days {
+			font-size: 11px;
+		}
+
+		.marktoday {
+      background-color: rgb(24 185 81);
+			color: white;
+		}
+
+		.markholiday {
+			color: red;
+		}
+
+		tbody tr:nth-child(1) {
+            background: linear-gradient(to bottom,rgb(113, 235, 73) 10%, rgb(142, 214, 118));
+						margin: 0 auto;
+						border: none;
+						height: 16px;
+						color: white;
+						font-size: 9px;
+        } 
+  	/* .calendar{
+  		border:1px solid #bbb;
+  		display: inline-block
+		}
+
+		.calendar table{
+  		empty-cells: hide;
+		}
+
+		.calendar caption{
+ 			padding: 3px;
+  		background: linear-gradient(to bottom,#ddd 10%, #bbb);
+		}
+
+		.calendar td{
+  		padding: 2px 6px;
+  		text-align: center;
+  		border:1px solid #ccc;
+  		background: linear-gradient(to bottom,#fff 10%, #ddd);
+  		border-radius:0 0 3px
+			}
+
+		.calendar td:hover{
+  		border:1px solid #888;
+		}
+
+		.calendar .holiday{
+  		background: linear-gradient(to bottom,#fff 10%, #ffc);
+		}
+
+		.calendar .today{
+  		font-weight:600;
+  		border:1px solid #888;
+		} */
+	</style>
+</head>
+<body>
+	<div class="alignment">
+	<div class="box">
+  <table>
+		<caption><span class="month">Sausis</span></caption>
+		<tbody class="days">
+			<tr>
+				<td>Pr</td>
+				<td>An</td>
+				<td>Tr</td>
+				<td>Ke</td>
+				<td>Pe</td>
+				<td>Še</td>
+				<td>Se</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="markholiday">1</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td class="markholiday">8</td>
+			</tr>
+			<tr>
+        <td>9</td>
+				<td>10</td>
+				<td>11</td>
+				<td>12</td>
+				<td class="marktoday">13</td>
+				<td>14</td>
+				<td class="markholiday">15</td>
+			</tr>
+			<tr>
+        <td>16</td>
+				<td>17</td>
+				<td>18</td>
+				<td>19</td>
+				<td>20</td>
+				<td>21</td>
+				<td class="markholiday">22</td>
+			</tr>
+			<tr>
+        <td>23</td>
+				<td>24</td>
+				<td>25</td>
+				<td>26</td>
+				<td>27</td>
+				<td>28</td>
+				<td class="markholiday">29</td>
+			</tr>
+			<tr>
+        <td>30</td>
+				<td>31</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="box">
+		<table>
+				<caption><span class="month">Vasaris</span></caption>
+				<tbody class="days">
+				<tr>
+					<td>Pr</td>
+						<td>An</td>
+					<td>Tr</td>
+					<td>Ke</td>
+					<td>Pe</td>
+					<td>Še</td>
+					<td>Se</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td class="markholiday">5</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<td>10</td>
+					<td>11</td>
+					<td class="markholiday">12</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>14</td>
+					<td>15</td>
+					<td class="markholiday">16</td>
+					<td>17</td>
+					<td>18</td>
+					<td class="markholiday">19</td>
+				</tr>
+				<tr>
+					<td>20</td>
+					<td>21</td>
+					<td>22</td>
+					<td>23</td>
+					<td>24</td>
+					<td>25</td>
+					<td class="markholiday">26</td>
+				</tr>
+				<tr>
+					<td>27</td>
+					<td>28</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="markholiday"></td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+		<div class="box">
+			<table>
+					<caption><span class="month">Kovas</span></caption>
+					<tbody class="days">
+						<tr>
+							<td>Pr</td>
+								<td>An</td>
+							<td>Tr</td>
+							<td>Ke</td>
+							<td>Pe</td>
+							<td>Še</td>
+							<td>Se</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td class="markholiday">5</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td class="markholiday">11</td>
+							<td class="markholiday">12</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+							<td class="markholiday">19</td>
+						</tr>
+						<tr>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+							<td class="markholiday">26</td>
+						</tr>
+						<tr>
+							<td>27</td>
+							<td>28</td>
+							<td>29</td>
+							<td>30</td>
+							<td>31</td>
+							<td></td>
+							<td class="markholiday"></td>
+						</tr>
+						</tbody>
+				</table>
+			</div>
+		</div>
+		<br>
+		<div class="alignment">
+			<div class="box">
+			</div>
+			<div class="box">
+			</div>
+			<div class="box">
+			</div>
+		</div>
+</body>
+</html>
