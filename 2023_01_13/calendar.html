@@ -7,64 +7,91 @@
   <title>Calendar</title>
 	<style>
 		body {
-			background: rgba(186, 193, 126, 0.577);
+			background: hsla(67, 58%, 84%, 0.576);
 		}
-		table {
-			background: #00000000;
-			width: 167px;
-			height: 152px;
-			border: initial;
-			text-align: center;
-			border-spacing: 0px;
-		}
-		caption {
-			background: linear-gradient(to bottom,rgb(70, 178, 40) 10%, rgb(113, 235, 73));
-			color: white;
-			height: 22px;
-			font-family: "Monaco", monospace;
-			font-weight: 100;
-		}
+
+		.alignment {
+      display: flex;
+      justify-content: center;
+    }
+
 		.box {
       display: flex;
       justify-content: center;
       width: 167px;
-      height: 167px;
+      height: 165px;
       background-color: white;
-            /* align-items: start; - Nurodome, kad vidiniai elementai būtų vertikaliai lygiuojami į kairę pusę.
-            align-items: end; - Nurodome, kad vidiniai elementai būtų vertikaliailygiuojami į dešinę pusę.
-            align-items: center; - Nurodome, kad vidiniai elementai būtų vertikaliai centruojami. */
       align-items: center;
+			margin: 4px;
     }
 
-		.alignment {
-            /* margin-bottom: 3rem; */
-            /* display: flex savybė nurodo, jog viduje esantys elementai bus išpoziciuonuoti vienoje eilėje arba pagal flex parametrų taisykles */
-      display: flex;
-            /* justify-content: start; - Nurodome, kad vidiniai elementai būtų lygiuojami į kairę pusę.
-            justify-content: end; - Nurodome, kad vidiniai elementai būtų lygiuojami į dešinę pusę.
-            justify-content: center; - Nurodome, kad vidiniai elementai būtų centruojami.
-            justify-content: space-between; - pozicionuoja elementus prigludusius prie elemento kraštų.
-            justify-content: space-around; - pozicionuoja elementus atitrauktus nuo elemento kraštų.
-            justify-content: space-evenly; - pozicionuoja elementus su vienodais tarpais tarpusavyje.
-            justify-content veikia tik prijungus display: flex savybę 
-            */
-      justify-content: center;
-      gap: 1rem;
-    }
+		table {
+			background: #00000000;
+			width: 167px;
+			height: 145px;
+			border: initial;
+			text-align: center;
+			border-spacing: 0px;
+			font-family: Helvetica, Arial, sans-serif;
+		}
+
+		caption {
+			background: linear-gradient(to bottom,rgb(4, 116, 43) 10%, rgb(28, 174, 79));
+			color: white;
+			height: 20px;
+			font-family: Helvetica, Arial, sans-serif;
+			font-weight: 100;
+		}
+
+		.definitionbox {
+			width: 167px;
+      background-color: white;
+			margin-left: 4px;
+			margin-right: 4px;
+			margin-top: 0px;
+			margin-bottom: 8px;
+		}
+
 		tr {
 			color:rgb(124, 122, 122)
 		}
 
-		tbody {
-			font-family: "Monaco", monospace;
-		}
+		tbody tr:nth-child(1) {
+            background: linear-gradient(to bottom,rgb(28, 174, 79) 10%, rgb(71, 236, 129));
+						margin: 0 auto;
+						border: none;
+						height: 16px;
+						color: white;
+						font-size: 9px;
+    } 
 
 		.month {
 			font-size: 11px;
+			font-family: Helvetica, Arial, sans-serif;
 		}
 
 		.days {
+			font-family: Monaco, "Courier New", monospace;
 			font-size: 11px;
+		}
+
+		.notworkingdays {
+			font-size: 8px;
+			font-family: Helvetica, Arial, sans-serif;
+			color:rgb(124, 122, 122);
+			text-align: left;
+		}
+
+		.notworkingdaysdef{
+			color:rgb(4, 116, 43);
+			font-weight: bold;
+		}
+		p {
+    display: block;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 7px;
+    margin-inline-end: 1px;
 		}
 
 		.marktoday {
@@ -72,52 +99,14 @@
 			color: white;
 		}
 
-		.markholiday {
+		.marksanday {
 			color: red;
 		}
 
-		tbody tr:nth-child(1) {
-            background: linear-gradient(to bottom,rgb(113, 235, 73) 10%, rgb(142, 214, 118));
-						margin: 0 auto;
-						border: none;
-						height: 16px;
-						color: white;
-						font-size: 9px;
-        } 
-  	/* .calendar{
-  		border:1px solid #bbb;
-  		display: inline-block
+		.markholiday {
+			background-color: rgb(241, 227, 214);
 		}
 
-		.calendar table{
-  		empty-cells: hide;
-		}
-
-		.calendar caption{
- 			padding: 3px;
-  		background: linear-gradient(to bottom,#ddd 10%, #bbb);
-		}
-
-		.calendar td{
-  		padding: 2px 6px;
-  		text-align: center;
-  		border:1px solid #ccc;
-  		background: linear-gradient(to bottom,#fff 10%, #ddd);
-  		border-radius:0 0 3px
-			}
-
-		.calendar td:hover{
-  		border:1px solid #888;
-		}
-
-		.calendar .holiday{
-  		background: linear-gradient(to bottom,#fff 10%, #ffc);
-		}
-
-		.calendar .today{
-  		font-weight:600;
-  		border:1px solid #888;
-		} */
 	</style>
 </head>
 <body>
@@ -142,7 +131,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td class="markholiday">1</td>
+				<td class="marksanday markholiday">1</td>
 			</tr>
 			<tr>
 				<td>2</td>
@@ -151,7 +140,7 @@
 				<td>5</td>
 				<td>6</td>
 				<td>7</td>
-				<td class="markholiday">8</td>
+				<td class="marksanday">8</td>
 			</tr>
 			<tr>
         <td>9</td>
@@ -160,7 +149,7 @@
 				<td>12</td>
 				<td class="marktoday">13</td>
 				<td>14</td>
-				<td class="markholiday">15</td>
+				<td class="marksanday">15</td>
 			</tr>
 			<tr>
         <td>16</td>
@@ -169,7 +158,7 @@
 				<td>19</td>
 				<td>20</td>
 				<td>21</td>
-				<td class="markholiday">22</td>
+				<td class="marksanday">22</td>
 			</tr>
 			<tr>
         <td>23</td>
@@ -178,7 +167,7 @@
 				<td>26</td>
 				<td>27</td>
 				<td>28</td>
-				<td class="markholiday">29</td>
+				<td class="marksanday">29</td>
 			</tr>
 			<tr>
         <td>30</td>
@@ -212,7 +201,7 @@
 					<td>2</td>
 					<td>3</td>
 					<td>4</td>
-					<td class="markholiday">5</td>
+					<td class="marksanday">5</td>
 				</tr>
 				<tr>
 					<td>6</td>
@@ -221,25 +210,25 @@
 					<td>9</td>
 					<td>10</td>
 					<td>11</td>
-					<td class="markholiday">12</td>
+					<td class="marksanday">12</td>
 				</tr>
 				<tr>
 					<td>13</td>
 					<td>14</td>
 					<td>15</td>
-					<td class="markholiday">16</td>
+					<td class="marksanday markholiday">16</td>
 					<td>17</td>
 					<td>18</td>
-					<td class="markholiday">19</td>
+					<td class="marksanday">19</td>
 				</tr>
 				<tr>
 					<td>20</td>
-					<td>21</td>
+					<td class="marksanday markholiday">21</td>
 					<td>22</td>
 					<td>23</td>
 					<td>24</td>
 					<td>25</td>
-					<td class="markholiday">26</td>
+					<td class="marksanday">26</td>
 				</tr>
 				<tr>
 					<td>27</td>
@@ -248,7 +237,7 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td class="markholiday"></td>
+					<td class="marksanday"></td>
 				</tr>
 			</tbody>
 			</table>
@@ -273,7 +262,7 @@
 							<td>2</td>
 							<td>3</td>
 							<td>4</td>
-							<td class="markholiday">5</td>
+							<td class="marksanday">5</td>
 						</tr>
 						<tr>
 							<td>6</td>
@@ -281,8 +270,8 @@
 							<td>8</td>
 							<td>9</td>
 							<td>10</td>
-							<td class="markholiday">11</td>
-							<td class="markholiday">12</td>
+							<td class="marksanday markholiday">11</td>
+							<td class="marksanday">12</td>
 						</tr>
 						<tr>
 							<td>13</td>
@@ -291,7 +280,7 @@
 							<td>16</td>
 							<td>17</td>
 							<td>18</td>
-							<td class="markholiday">19</td>
+							<td class="marksanday">19</td>
 						</tr>
 						<tr>
 							<td>20</td>
@@ -300,7 +289,7 @@
 							<td>23</td>
 							<td>24</td>
 							<td>25</td>
-							<td class="markholiday">26</td>
+							<td class="marksanday">26</td>
 						</tr>
 						<tr>
 							<td>27</td>
@@ -309,20 +298,673 @@
 							<td>30</td>
 							<td>31</td>
 							<td></td>
-							<td class="markholiday"></td>
+							<td class="marksanday"></td>
 						</tr>
 						</tbody>
 				</table>
 			</div>
 		</div>
-		<br>
 		<div class="alignment">
-			<div class="box">
+			<div class="definitionbox">
+				<p><span class="notworkingdays">01-01 </span><span class="notworkingdays notworkingdaysdef">Naujieji metai</span></p>
 			</div>
-			<div class="box">
+			<div class="definitionbox">
+				<p><span class="notworkingdays">02-16 </span><span class="notworkingdays notworkingdaysdef">Lietuvos Valstybės atkūrimo diena</span></p>
+				<p><span class="notworkingdays">02-21 </span><span class="notworkingdays notworkingdaysdef">Užgavėnės</span></p>
 			</div>
-			<div class="box">
+			<div class="definitionbox">
+				<p><span class="notworkingdays">03-11 </span><span class="notworkingdays notworkingdaysdef">Nepriklausomybės atkūrimo diena</span></p>
 			</div>
 		</div>
+		<div class="alignment">
+			<div class="box">
+			<table>
+				<caption><span class="month">Balandis</span></caption>
+				<tbody class="days">
+					<tr>
+						<td>Pr</td>
+						<td>An</td>
+						<td>Tr</td>
+						<td>Ke</td>
+						<td>Pe</td>
+						<td>Še</td>
+						<td>Se</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td class="marksanday">2</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td class="marksanday markholiday">9</td>
+					</tr>
+					<tr>
+						<td class="marksanday markholiday">10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+						<td class="marksanday">16</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+						<td class="marksanday">23</td>
+					</tr>
+					<tr>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+						<td class="marksanday">30</td>
+					</tr>
+					<tr>
+						<td>ą</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="box">
+				<table>
+					<caption><span class="month">Gegužė</span></caption>
+						<tbody class="days">
+						<tr>
+							<td>Pr</td>
+							<td>An</td>
+							<td>Tr</td>
+							<td>Ke</td>
+							<td>Pe</td>
+							<td>Še</td>
+							<td>Se</td>
+						</tr>
+						<tr>
+							<td class="marksanday markholiday">1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td class="marksanday markholiday">7</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+							<td class="marksanday">14</td>
+						</tr>
+						<tr>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+							<td class="marksanday">21</td>
+						</tr>
+						<tr>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+							<td>27</td>
+							<td class="marksanday">28</td>
+						</tr>
+						<tr>
+							<td>29</td>
+							<td>30</td>
+							<td>31</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+					</table>
+				</div>
+				<div class="box">
+					<table>
+							<caption><span class="month">Birželis</span></caption>
+							<tbody class="days">
+								<tr>
+									<td>Pr</td>
+									<td>An</td>
+									<td>Tr</td>
+									<td>Ke</td>
+									<td>Pe</td>
+									<td>Še</td>
+									<td>Se</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>1</td>
+									<td>2</td>
+									<td>3</td>
+									<td class="marksanday markholiday">4</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+									<td>8</td>
+									<td>9</td>
+									<td>10</td>
+									<td class="marksanday">11</td>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>13</td>
+									<td>14</td>
+									<td>15</td>
+									<td>16</td>
+									<td>17</td>
+									<td class="marksanday">18</td>
+								</tr>
+								<tr>
+									<td>19</td>
+									<td>20</td>
+									<td>21</td>
+									<td>22</td>
+									<td>23</td>
+									<td class="marksanday markholiday">24</td>
+									<td class="marksanday">25</td>
+								</tr>
+								<tr>
+									<td>26</td>
+									<td>27</td>
+									<td>28</td>
+									<td>29</td>
+									<td>30</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="alignment">
+					<div class="definitionbox">
+						<p><span class="notworkingdays">04-09 </span><span class="notworkingdays notworkingdaysdef">Velykos</span></p>
+						<p><span class="notworkingdays">04-10 </span><span class="notworkingdays notworkingdaysdef">Velykų antroji diena</span></p>
+					</div>
+					<div class="definitionbox">
+						<p><span class="notworkingdays">05-01 </span><span class="notworkingdays notworkingdaysdef">Tarptautinė darbo diena</span></p>
+						<p><span class="notworkingdays">05-07 </span><span class="notworkingdays notworkingdaysdef">Motinos diena</span></p>
+					</div>
+					<div class="definitionbox">
+						<p><span class="notworkingdays">06-04 </span><span class="notworkingdays notworkingdaysdef">Tėvo diena</span></p>
+						<p><span class="notworkingdays">06-24 </span><span class="notworkingdays notworkingdaysdef">Joninės</span></p>
+					</div>
+				</div>
+				<div class="alignment">
+					<div class="box">
+					<table>
+						<caption><span class="month">Liepa</span></caption>
+						<tbody class="days">
+							<tr>
+								<td>Pr</td>
+								<td>An</td>
+								<td>Tr</td>
+								<td>Ke</td>
+								<td>Pe</td>
+								<td>Še</td>
+								<td>Se</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>1</td>
+								<td class="marksanday">2</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+								<td class="marksanday markholiday">6</td>
+								<td>7</td>
+								<td>8</td>
+								<td class="marksanday">9</td>
+							</tr>
+							<tr>
+								<td>10</td>
+								<td>11</td>
+								<td>12</td>
+								<td>13</td>
+								<td>14</td>
+								<td>15</td>
+								<td class="marksanday">16</td>
+							</tr>
+							<tr>
+								<td>17</td>
+								<td>18</td>
+								<td>19</td>
+								<td>20</td>
+								<td>21</td>
+								<td>22</td>
+								<td class="marksanday">23</td>
+							</tr>
+							<tr>
+								<td>24</td>
+								<td>25</td>
+								<td>26</td>
+								<td>27</td>
+								<td>28</td>
+								<td>29</td>
+								<td class="marksanday">30</td>
+							</tr>
+							<tr>
+								<td>31</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="box">
+						<table>
+								<caption><span class="month">Rugpjūtis</span></caption>
+								<tbody class="days">
+								<tr>
+									<td>Pr</td>
+									<td>An</td>
+									<td>Tr</td>
+									<td>Ke</td>
+									<td>Pe</td>
+									<td>Še</td>
+									<td>Se</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>1</td>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td class="marksanday">6</td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td>8</td>
+									<td>9</td>
+									<td>10</td>
+									<td>11</td>
+									<td>12</td>
+									<td class="marksanday">13</td>
+								</tr>
+								<tr>
+									<td>14</td>
+									<td class="marksanday markholiday">15</td>
+									<td>16</td>
+									<td>17</td>
+									<td>18</td>
+									<td>19</td>
+									<td class="marksanday">20</td>
+								</tr>
+								<tr>
+									<td>21</td>
+									<td>22</td>
+									<td>23</td>
+									<td>24</td>
+									<td>25</td>
+									<td>26</td>
+									<td class="marksanday">27</td>
+								</tr>
+								<tr>
+									<td>28</td>
+									<td>29</td>
+									<td>30</td>
+									<td>31</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+							</table>
+						</div>
+						<div class="box">
+							<table>
+									<caption><span class="month">Rugsėjis</span></caption>
+									<tbody class="days">
+										<tr>
+											<td>Pr</td>
+											<td>An</td>
+											<td>Tr</td>
+											<td>Ke</td>
+											<td>Pe</td>
+											<td>Še</td>
+											<td>Se</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>1</td>
+											<td>2</td>
+											<td class="marksanday">3</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>5</td>
+											<td>6</td>
+											<td>7</td>
+											<td>8</td>
+											<td>9</td>
+											<td class="marksanday">10</td>
+										</tr>
+										<tr>
+											<td>11</td>
+											<td>12</td>
+											<td>13</td>
+											<td>14</td>
+											<td>15</td>
+											<td>16</td>
+											<td class="marksanday">17</td>
+										</tr>
+										<tr>
+											<td>18</td>
+											<td>19</td>
+											<td>20</td>
+											<td>21</td>
+											<td>22</td>
+											<td>23</td>
+											<td class="marksanday">24</td>
+										</tr>
+										<tr>
+											<td>25</td>
+											<td>26</td>
+											<td>27</td>
+											<td>28</td>
+											<td>29</td>
+											<td>30</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="alignment">
+							<div class="definitionbox">
+								<p><span class="notworkingdays">07-06 </span><span class="notworkingdays notworkingdaysdef">Karaliaus Mindaugo karūnavimo diena</span></p>
+							</div>
+							<div class="definitionbox">
+								<p><span class="notworkingdays">08-15 </span><span class="notworkingdays notworkingdaysdef">Žolinė</span></p>
+							</div>
+							<div class="definitionbox">
+								<p></p>
+							</div>
+						</div>
+	
+						<div class="alignment">
+							<div class="box">
+							<table>
+								<caption><span class="month">Spalis</span></caption>
+								<tbody class="days">
+									<tr>
+										<td>Pr</td>
+										<td>An</td>
+										<td>Tr</td>
+										<td>Ke</td>
+										<td>Pe</td>
+										<td>Še</td>
+										<td>Se</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td class="marksanday">1</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+										<td class="marksanday">8</td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td>10</td>
+										<td>11</td>
+										<td>12</td>
+										<td>13</td>
+										<td>14</td>
+										<td class="marksanday">15</td>
+									</tr>
+									<tr>
+										<td>16</td>
+										<td>17</td>
+										<td>18</td>
+										<td>19</td>
+										<td>20</td>
+										<td>21</td>
+										<td class="marksanday">22</td>
+									</tr>
+									<tr>
+										<td>23</td>
+										<td>24</td>
+										<td>25</td>
+										<td>26</td>
+										<td>27</td>
+										<td>28</td>
+										<td class="marksanday">29</td>
+									</tr>
+									<tr>
+										<td>30</td>
+										<td>31</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="box">
+								<table>
+										<caption><span class="month">Lapkritis</span></caption>
+										<tbody class="days">
+										<tr>
+											<td>Pr</td>
+											<td>An</td>
+											<td>Tr</td>
+											<td>Ke</td>
+											<td>Pe</td>
+											<td>Še</td>
+											<td>Se</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td class="marksanday markholiday">1</td>
+											<td class="marksanday markholiday">2</td>
+											<td>3</td>
+											<td>4</td>
+											<td class="marksanday">5</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td>7</td>
+											<td>8</td>
+											<td>9</td>
+											<td>10</td>
+											<td>11</td>
+											<td class="marksanday">12</td>
+										</tr>
+										<tr>
+											<td>13</td>
+											<td>14</td>
+											<td>15</td>
+											<td>16</td>
+											<td>17</td>
+											<td>18</td>
+											<td class="marksanday">19</td>
+										</tr>
+										<tr>
+											<td>20</td>
+											<td>21</td>
+											<td>22</td>
+											<td>23</td>
+											<td>24</td>
+											<td>25</td>
+											<td class="marksanday">26</td>
+										</tr>
+										<tr>
+											<td>27</td>
+											<td>28</td>
+											<td>28</td>
+											<td>29</td>
+											<td>30</td>
+											<td></td>
+											<td class="marksanday"></td>
+										</tr>
+									</tbody>
+									</table>
+								</div>
+								<div class="box">
+									<table>
+											<caption><span class="month">Gruodis</span></caption>
+											<tbody class="days">
+												<tr>
+													<td>Pr</td>
+														<td>An</td>
+													<td>Tr</td>
+													<td>Ke</td>
+													<td>Pe</td>
+													<td>Še</td>
+													<td>Se</td>
+												</tr>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td>1</td>
+													<td>2</td>
+													<td class="marksanday">3</td>
+												</tr>
+												<tr>
+													<td>4</td>
+													<td>5</td>
+													<td>6</td>
+													<td>7</td>
+													<td>8</td>
+													<td>9</td>
+													<td class="marksanday">10</td>
+												</tr>
+												<tr>
+													<td>11</td>
+													<td>12</td>
+													<td>13</td>
+													<td>14</td>
+													<td>15</td>
+													<td>16</td>
+													<td class="marksanday">17</td>
+												</tr>
+												<tr>
+													<td>18</td>
+													<td>19</td>
+													<td>20</td>
+													<td>21</td>
+													<td>22</td>
+													<td>23</td>
+													<td class="marksanday markholiday">24</td>
+												</tr>
+												<tr>
+													<td class="marksanday markholiday">25</td>
+													<td class="marksanday markholiday">26</td>
+													<td>27</td>
+													<td>28</td>
+													<td>29</td>
+													<td>30</td>
+													<td class="marksanday">31</td>
+												</tr>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												</tbody>
+										</table>
+									</div>
+								</div>
+			
+								<div class="alignment">
+									<div class="definitionbox">
+										<p></p>
+									</div>
+									<div class="definitionbox">
+										<p><span class="notworkingdays">11-01 </span><span class="notworkingdays notworkingdaysdef">Visų šventujų diena</span></p>
+										<p><span class="notworkingdays">11-02 </span><span class="notworkingdays notworkingdaysdef">Vėlinės</span></p>
+									</div>
+									<div class="definitionbox">
+										<p><span class="notworkingdays">12-24 </span><span class="notworkingdays notworkingdaysdef">Šv. Kučios</span></p>
+										<p><span class="notworkingdays">12-25 </span><span class="notworkingdays notworkingdaysdef">Sv. Kalėdos</span></p>
+										<p><span class="notworkingdays">12-26 </span><span class="notworkingdays notworkingdaysdef">Šv. Kalėdų antroji diena</span></p>
+									</div>
+								</div>
 </body>
 </html>
