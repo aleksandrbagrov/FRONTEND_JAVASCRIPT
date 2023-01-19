@@ -7,50 +7,106 @@
   <script src="https://kit.fontawesome.com/9975e395bc.js" crossorigin="anonymous"></script>
   <title>WEB Form</title>
   <style>
-    .alignment {
+    body {
+      background: pink;
       display: flex;
       justify-content: center;
     }
+    
     .paddingbox {
       display: flex;
-      width: 900px;
-      height: 600px;
+      width: 850px;
+      height: 450px;
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
 
     }
     .greenbox {
-      box-sizing: border-box;
-      width: 30%;
-      background: greenyellow;
+      width: 40%;
+      height: inherit;
+      background: rgb(92,206,147);
+      color: white;
       padding: 10px;
     }
 
+    .iconCirkle {
+      display: flex;
+      width: 45px;
+      height: 45px;
+      border: 1px solid rgba(255, 255, 255, 0.855);
+      border-radius: 50%;
+      background: rgb(92,206,147);
+      border-color: white;
+      margin-top: 18px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dataBox {
+
+    }
+
+
+
     .whitebox {
-      box-sizing: border-box;
-      width: 70%;
+      width: 60%;
+      height: inherit;
       background: white;
       padding: 10px;
     }
 
     label {
       display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .flexbox {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .divider_div {
+      margin: 1rem;
+      width: 50%;
+      margin-bottom: 0;
+    }
+
+    .divider1_div {
+      margin: 1rem;
+      height: 31px;
+      margin-top: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 1px 2px;
+    }
+
+    textarea {
+      resize: none;
+      width: 100%;
     }
 
 
   </style>
 </head>
-<body class="alignment">
-
-    <div  class=" paddingbox">
-  <div class="greenbox">
+<body>
+  <div  class=" paddingbox">
+    <div class="greenbox">
     <h1>Let's get in touch</h1>
-    <br>
     <p>We're open for any suggestion on just to have a chat</p>
     <br>
-    <div>
-      <label><i class="fa-sharp fa-solid fa-location-dot"></i></i>Address: 198 West 21st Street, Suite 721 New York NY 10018</label>
+    <div class="flexbox">
+      <div class="iconCirkle">
+        <i class="fa-sharp fa-solid fa-location-dot"></i>
+      </div>
+      <div>
+        <p>Address: 198 West 21st</p>
+        <p>Street, Suite 721 New York</p>
+        <p>NY 10018</p>
+      </div>
+    </div>
     </div>
     <br>
     <div>
@@ -62,12 +118,11 @@
     </div>
     <br>
     <div>
-      <label><i class="fa-sharp fa-solid fa-globe"></i>Website yoursite.com</label>
+      <label><i class="fa-sharp fa-solid fa-globe"></i>Website: yoursite.com</label>
     </div>
   </div>
   <div class="whitebox">
     <h1>Get in touch</h1>
-    <div>
     <div>
       <label>FULL NAME</label>
       <!-- required atributas nurodo, jog laukelyje turi būti kažkas įvesta -->
@@ -77,7 +132,6 @@
     <label>EMAIL ADDRESS</label>
     <!-- required atributas nurodo, jog laukelyje turi būti kažkas įvesta -->
     <input type="email" placeholder="Email">
-  </div>
   </div>
   <div>
     <label>SUBJECT</label>
