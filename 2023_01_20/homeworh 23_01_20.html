@@ -1,0 +1,66 @@
+<div class="bigrectangle brown top_right"></div>
+<div class="bigrectangle orange radius_bottomright"></div>
+<div class="bigrectangle orange bottom_left"></div>
+<div class="bigrectangle brown bottom_right radius_topleft"></div>
+<div class="smallrectangletop brown"></div>
+<div class="smallrectanglebottom orange"></div>
+<style>
+  * {
+    margin: 0;
+  }
+  
+  .bigrectangle {
+    position: absolute;
+    width: 380px;
+    height: 150px;
+    background: #F2E09F;
+  }
+
+  .smallrectangletop {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    top: 100px;
+    left: 150px;
+  }
+  .smallrectanglebottom {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    top: 150px;
+    left: 150px;
+  }
+  
+  .brown {
+    background: #C36271;
+  }
+  
+  .orange {
+    background: #F2E09F;
+  }
+  
+  .bottom_left {
+    bottom: 0;
+    left:0;
+  }
+  .top_right {
+    top: 0;
+    right: 0;
+  }
+  .bottom_right {
+    bottom: 0;
+    right:0;
+  }
+
+  .radius_topleft {
+    border-top-left-radius: 100px;
+  }
+  
+  .radius_bottomright {
+    border-bottom-right-radius: 100px;
+  }
+</style>
