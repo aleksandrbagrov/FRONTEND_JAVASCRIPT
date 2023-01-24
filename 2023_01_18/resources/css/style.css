@@ -7,8 +7,9 @@
 
 body {
     display: flex;
+    margin: 100px auto;
     justify-content: center;
-    background: whitesmoke;
+    background: rgb(225, 202, 202);
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -19,13 +20,58 @@ body {
 
 .leftbox {
     width: 30%;
+    background: #5CCE93;
     color: white;
 }
 
-h1 {
-    color: tomato;
-    font-family: 'Open Sans', sans-serif;
-    font-style: italic;
-    font-size: 90px;
+/* svg {
+    width:30px;
+    height: 30px;
+} */
+
+.rightbox {
+    width: 70%;
+    background: white;
+}
+
+h2 {
+    margin: 20px;
+    /* font-size: 0px; */
     font-weight: 400;
 } 
+
+p {
+    margin: 20px;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.leftbox span {
+    color: rgb(221, 243, 255);
+}
+
+.detail {
+    padding: 20px 0 20px 45px;
+    font-size: 14px;
+    position: relative;
+}
+
+.circle {
+    margin: 20px;
+    width: 35px;
+    height: 35px;
+    display: block;
+    border: 1px solid rgb(194 209 218);
+    border-radius: 50%;
+    position: absolute;
+    top: 13px;
+    left: 0;
+}
+
+svg {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    width: 14px;
+    height: 14px;
+}
