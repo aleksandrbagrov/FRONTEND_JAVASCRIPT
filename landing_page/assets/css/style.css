@@ -1,26 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Mandali&family=Open+Sans:wght@300&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Mandali', sans-serif;
   color: #6c757d;
+  background: url('..\assets\images\landing_page.png') no-repeat top center;
 }
+
 header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-}
-
-header .container {
-  display: flex;
-  justify-content: space-between;
+  padding: 20px 0;
 }
 
 .container {
   width: 100%;
-  max-width: 1140px;
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+.d_flex {
+  display: flex;
+}
+
+header .container {
+display: flex;
+justify-content: space-between;
+align-content: center;
+padding-top: 4px;
+padding-left: 141px;
+padding-right: 155px;
 }
 
 ul {
@@ -31,10 +46,34 @@ ul {
 
 header nav ul {
   display: flex;
-  gap: 40px;
+  gap: 37px;
+}
+
+.account ul {
+  display: flex;
+  gap: 35px;
+}
+
+header .container img {
+  padding-top: 5px;
+}
+
+#home {
+  padding-top: 170px;
+  background: url('../images/landing_page.png') no-repeat top center / cover;
+}
+
+#home .left,
+#home .right {
+    width: 50%;
+}
+
+#home .left {
+  padding-top: 60px;
 }
 
 a {
+  display: block;
   text-decoration: none;
 }
 
