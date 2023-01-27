@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Mandali&family=Open+Sans:wght@300&display=swap');
 
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
 
 @font-face {
   font-family: 'Cerebri Sans';
@@ -38,8 +38,8 @@ header {
 }
 
 header .container {
-justify-content: space-between;
-padding-top: 4px;
+  justify-content: space-between;
+  padding-top: 4px;
 }
 
 ul {
@@ -109,7 +109,12 @@ header .container img {
   padding-bottom: 30px;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Cerebri Sans';
   color: #343a40;
 }
@@ -137,8 +142,8 @@ img {
   gap: 13px;
 }
 
-#home .left-aligne li::before{
-  content: "\F270";
+#home .left-aligne li::before {
+  content: '\F270';
   font-family: bootstrap-icons;
   color: #39e5b7;
   font-weight: bold;
@@ -155,4 +160,72 @@ img {
   padding: 9px 30px;
   transition: all 0.5s ease-in-out;
 }
+
+#menu {
+  padding-top: 90px !important;
+  padding-bottom: 90px !important;
+  position: relative;
+  text-align: center;
+}
+
+.top-section h4 span {
+  color: #6c757d;
+}
+
+.top-section h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.top-section p {
+  max-width: 560px;
+  margin: 0 auto 50px;
+  line-height: 27px;
+}
+
+#menu .step {
+  text-align: center;
+  padding: 40px;
+  position: relative;
+}
+
+#menu .icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 28% 72% 50% 50%/26% 20% 80% 74%;
+  background: rgba(31, 97, 235, 0.15);
+  margin: 0 auto 35px;
+}
+
+#menu .icon i {
+  font-size: 50px;
+  color: black;
+}
+
+#menu .step:nth-child(2) .icon {
+  background: rgba(28, 225, 172, 0.15);
+}
+
+#menu .step:nth-child(3) .icon {
+  background: rgba(255, 194, 18, 0.15);
+}
+
+#menu .step p {
+  margin: 0 0 20px 0;
+  line-height: 20px;
+}
+#menu .step::after {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  content: url(../images/arrow-top.png);
+  font-weight: bold;
+}
+
+/* #features {
+  padding-top: 90px !important;
+  padding-bottom: 90px !important;
+  position: relative;
+  text-align: center;
+} */
 
