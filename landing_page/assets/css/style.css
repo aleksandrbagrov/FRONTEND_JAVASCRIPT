@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mandali&family=Open+Sans:wght@300&display=swap');
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
 @font-face {
   font-family: 'Cerebri Sans';
   src: url('../fonts/CerebriSansPro-Bold.ttf');
@@ -73,6 +75,7 @@ header .container img {
 #home {
   padding-top: 170px;
   background: url('../images/hero-3-bg.png') no-repeat top center / cover;
+  padding-bottom: 140px;
 }
 
 #home .container {
@@ -94,12 +97,16 @@ header .container img {
 }
 
 .left-aligne {
-  padding-top: 70px;
-  padding-right: 5px;
+  padding-top: 68px;
+  /* padding-right: 5px; */
 }
 
 .left-aligne p {
   font-size: 17px;
+}
+
+#home .left-aligne ul {
+  padding-bottom: 30px;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -124,6 +131,19 @@ img {
   max-width: 100%;
 }
 
+#home .left-aligne li {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+#home .left-aligne li::before{
+  content: "\F270";
+  font-family: bootstrap-icons;
+  color: #39e5b7;
+  font-weight: bold;
+}
+
 .button {
   display: inline-block;
   width: 150px;
@@ -135,10 +155,4 @@ img {
   padding: 9px 30px;
   transition: all 0.5s ease-in-out;
 }
-
-#home .left-aligne p::before {
-  
-}
-
-
 
