@@ -179,6 +179,7 @@ img {
 }
 
 #howitwork .step {
+  padding: 0 40px;
   text-align: center;
   position: relative;
 }
@@ -210,16 +211,16 @@ img {
 
 #howitwork .step:nth-child(1):after {
   position: absolute;
-  top: 145px;
-  left: 306px;
+  top: 100px;
+  right: -56px;
   content: url(../images/arrow-top.png);
   font-weight: bold;
 }
 
 #howitwork .step:nth-child(2):after {
   position: absolute;
-  top: 145px;
-  left: 306px;
+  top: 100px;
+  right: -56px;
   content: url(../images/arrow-bottom.png);
   font-weight: bold;
 }
@@ -373,7 +374,7 @@ section {
   padding: 50px 0;
   display: flex;
   width: 122%;
-  gap: 10px;
+  gap: 20px;
   margin-left: -125px;
 }
 
@@ -402,8 +403,8 @@ box-shadow: 0 0 10px 3px #f7f7f7;
 }
 
 .button1 {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #87a3e1;
 }
@@ -426,4 +427,18 @@ box-shadow: 0 0 10px 3px #f7f7f7;
   height: 13px;
   border: 1px solid #1f61eb;
   border-radius: 50%;
+}
+
+#testimonial {
+  background: #f8f9fa;
+}
+
+#testimonial .bottom-section {
+  width: 66.7%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#testimonial .bottom-section h5 {
+  font-size: 18px;
 }
