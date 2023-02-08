@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <script type="application/javascript">
+    const rand = (min, max) => {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function draw() {
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+
+        ctx.beginPath();
+        ctx.fillStyle = "#FCFC39";
+        ctx.fillRect(10, 10, 450, 450);
+
+        ctx.beginPath();
+        ctx.fillStyle = "#4BFD68";
+        ctx.arc(235, 235, 225, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+    }
+
+    draw();
+
+    function drawDot(x, y) {
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+
+        ctx.beginPath();
+        ctx.fillStyle = "red";
+        ctx.arc(x, y, 1, 0, 2 * Math.PI);
+        ctx.fill();
+      };
+    }
+
+    let myPi = 0;
+    let i = 1
+    let counter = 0;
+    do {
+      const x = Math.random();
+      const y = Math.random();
+        drawDot(10 + x * 450, 10 + y * 450);
+      const circleYesNo = x * x + y * y;
+      if (circleYesNo <= 1) counter++;
+      i++;
+      myPi = (counter * 4) / i;
+    } while (Math.abs(myPi - Math.PI) > 0.00001);
+    document.write(`<h1 style="margin-top: 20px;">MyPI = ${myPi}</h1>`);
+    document.write(`<h2 style="margin-top: 20px;">PI = ${Math.PI}</h2>`);
+    document.write(`<h3 style="margin-top: 20px;">counter = ${counter}</h3>`);
+    document.write(`<h4 style="margin-top: 20px;">i = ${i}</h4>`);
+  </script>
+
+</body>
+
+</html>
