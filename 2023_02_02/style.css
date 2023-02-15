@@ -1,0 +1,36 @@
+.start-btn {
+    padding: 0.5em;
+    margin-left: 2rem;
+    min-width: 70px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: green;
+    color: rgb(17, 16, 16);
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid transparent;
+  }
+
+  .MyPI {
+    color: greenyellow;
+    font-size: 2em;
+    /* border-radius: 50%; */
+    border: 1px solid greenyellow;
+    width: 400px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #mathPI {
+    color: red;
+  }
+
+  #dotsInCircle {
+    color: green;
+  }
+
+  #totalDots {
+    color: rgb(108, 173, 186);
+  }

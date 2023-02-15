@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id='example'>Обновите браузер</canvas>
+    <script>
+      var example = document.getElementById("example"),
+        ctx       = example.getContext('2d'), // Контекст
+        pic       = new Image();              // "Создаём" изображение
+      pic.src    = 'http://habrahabr.ru/i/nocopypast.png';  // Источник изображения, позаимствовано на хабре
+      pic.onload = function() {    // Событие onLoad, ждём момента пока загрузится изображение
+        ctx.drawImage(pic, 0, 0);  // Рисуем изображение от точки с координатами 0, 0
+      }
+    </script>
+</body>
+</html>
