@@ -2,4 +2,4 @@
 
 <h2>HTML, CSS</h2>
 
-[**Link to Landing Page**](https://github.com/aleksandrbagrov/FRONTEND_JAVASCRIPT/new/master/landing_page/index.html)
+[**Link to Landing Page**🌐](https://github.com/aleksandrbagrov/FRONTEND_JAVASCRIPT/new/master/landing_page/index.html)
