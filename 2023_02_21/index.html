@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+    <title>Stopwatch</title>
+    <style>
+        p {
+            padding: 30px;
+            font-size: 30px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="field col-6 bg-primary-subtle">
+            <div class="name text-end m-4">
+                <h4>STOPWATCH</h4>
+                <hr>
+            </div>
+            <div class="stopwatch">
+                <p></p>
+            </div>
+            <div class="buttons d-flex">
+                <button type="button" id="startStop" class="btn btn-primary mx-4"></button>
+                <button type="button" id="reset" class="btn btn-primary">RESET</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const status = {
+            onOff: false,
+            counter: 0,
+            intervalID: null,
+        }
+
+        const vatchElem = document.querySelector('p');
+        vatchElem.innerHTML = `00 hrs 00 min 00 sec . 00`;
+        const startButton = document.getElementById('startStop');
+        startButton.innerHTML = 'START';
+        console.log(`Initial HTML is null${vatchElem.innerHTML}`);
+
+        const timer = () => {
+            status.counter += 10;
+            const milsec = (status.counter % 1000) / 10;
+            const vewmilsec = milsec < 10 ? `0${milsec}` : `${milsec}`;
+            const sec = Math.floor(status.counter / 1000);
+            const sec1 = Math.floor(sec % 60);
+            const viewsec = sec1 < 10 ? `0${sec1}` : `${sec1}`;
+            const min = Math.floor(sec / 60);
+            const viewmin = min < 10 ? `0${min}` : `${min}`;
+            const hour = Math.floor(min / 60);
+            const viewhour = hour < 10 ? `0${hour}` : `${hour}`;
+            vatchElem.innerHTML = `${viewhour} hrs ${viewmin} min ${viewsec} sec . ${vewmilsec}`;
+            startButton.innerHTML = 'PAUSE';
+        }
+
+        const stopwatch = () => {
+            if (!status.onOff) {
+                status.onOff = true;
+                status.intervalID = setInterval(timer, 10);
+            } else {
+                status.onOff = false;
+                startButton.innerHTML = 'CONTINUE';
+                return clearInterval(status.intervalID);
+            }
+        }
+
+        const stop = () => {
+            status.onOff = false;
+            status.counter = 0;
+            clearInterval(status.intervalID);
+            vatchElem.innerHTML = `00 hrs 00 min 00 sec . 00`;
+            startButton.innerHTML = 'START';
+            return;
+        }
+
+        const start = document.getElementById('startStop');
+        start.addEventListener('click', stopwatch);
+        const reset = document.getElementById('reset');
+        reset.addEventListener('click', stop);
+
+    </script>
+</body>
+
+</html>

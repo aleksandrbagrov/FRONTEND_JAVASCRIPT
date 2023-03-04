@@ -1,0 +1,160 @@
+.stol {
+  background: brown;
+  transform: rotateX(70deg);
+  transition: transform 4s;
+  transition-timing-function: ease;
+}
+
+.stol:hover {
+  transform: rotateX(0deg);
+}
+
+.control {
+  width: 33.33333%;
+  position: relative;
+}
+
+.eventListenerOnOff {
+  position: absolute;
+  top: 13px;
+  left: 203px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: white;
+}
+
+.eventListenerTVProg {
+  position: absolute;
+  top: 22px;
+  left: 273px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: yellow;
+}
+
+.eventListenerBack {
+  position: absolute;
+  top: 40px;
+  left: 292px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: red;
+}
+
+.eventListenerGames {
+  position: absolute;
+  top: 40px;
+  left: 254px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: blue;
+}
+
+.eventListenerGoogle {
+  position: absolute;
+  top: 58px;
+  left: 274px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: green;
+}
+
+.tv {
+  width: 100%;
+  position: relative;
+}
+
+.tv img {
+  width: 50%;
+}
+
+.box {
+  display: flex;
+  position: absolute;
+  top: 13px;
+  left: 337px;
+  width: 48%;
+  height: 345px;
+  background: black;
+}
+
+.box .content {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.box .content h1 {
+  display: block;
+  color: white;
+  font-size: 50px;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+.box .content div {
+  width: 40%;
+  margin: 40px auto 0;
+}
+
+.box .content div ul {
+  list-style: none;
+  text-align: left;
+}
+
+.box .content img {
+  height: 13vh;
+  width: 40%;
+  object-fit: contain;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+section {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+p {
+  padding: 20px 0;
+}
+
+.container {
+  perspective: 500px;
+  margin: 0 40px;
+  background: rgba(195, 209, 212, .7);
+  border-radius: 5px;
+}
+
+.style-flat {
+  transform-style: flat;
+}
+
+.style-3d {
+  transform-style: preserve-3d;
+}
+
+.flip {
+  height: 200px;
+  border-radius: 5px;
+  transform: rotateX(45deg);
+  position: relative;
+  background: rgba(169, 90, 145, .8);
+  animation: rotate 5s infinite;
+}
+
+@keyframes rotate {
+  50% {
+    transform: rotateX(0deg);
+  }
+}

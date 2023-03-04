@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User API</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        .card {
+            margin: 0 auto;
+        }
+
+        .photo-box {
+            width: 150px;
+            height: 120px;
+            border-radius: 50%;
+        }
+
+        .photo-box img {
+            margin: 0 auto;
+            width: 100%;
+            z-index: 1;
+        }
+
+        #userInfo {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            font-size: 30px;
+            margin: 30px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <div class="card  col-6">
+        <div class="card-header d-flex justify-content-center">
+            <div id="photo" class="photo-box">
+                <!-- <img src="user-1.jpg" class="rounded-circle mt-3 border border-secondary"> -->
+            </div>
+        </div>
+        <div id="userInfo" class="py-5">
+            <p></p>
+            <h1>Leila Ibrahim</h1>
+        </div>
+        <div class="card-body">
+            <ul id="getInfo" class="d-flex justify-content-center"">
+                <li name=" name" onmouseenter="getData(event)" value="0"><i class="bi bi-person-vcard"></i></li>
+                <li name="email" onmouseenter="getData(event)" value="1"><i class="bi bi-envelope"></i></li>
+                <li name="birthday" onmouseenter="getData(event)" value="2"><i class="bi bi-calendar-week"></i></li>
+                <li name="location" onmouseenter="getData(event)" value="3"><i class="bi bi-geo"></i></li>
+                <li name="telephone" onmouseenter="getData(event)" value="4"><i class="bi bi-telephone"></i></li>
+                <li name="password" onmouseenter="getData(event)" value="5"><i class="bi bi-lock"></i></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // const choose = document.getElementById(".getInfo");
+        // choose.addEventListener("mouseenter", radiochoose);
+
+        const getUser = () => {
+            fetch('https://randomuser.me/api/')
+                .then(atsakymas => atsakymas.json())
+                .then(atsakymas => {
+                    console.log(atsakymas);
+                    document.querySelector('.photo-box').innerHTML = `<img src="${atsakymas.results[0].picture.large}" class="rounded-circle mt-3 p-2 border border-secondary" alt="">`;
+                    document.querySelector('#userInfo p').innerHTML = `Hi, My name is`;
+                    document.querySelector('#userInfo h1').innerHTML = `${atsakymas.results[0].name.first} ${atsakymas.results[0].name.last}`;
+                });
+                return atsakymas;
+        }
+
+        const user = getUser();
+
+
+        const getData = (e) => {
+
+            const target = e.target.value;
+            console.log(e.target.value);
+            console.log(atsakymas);
+            switch (target) {
+                case 0: {
+                    document.querySelector('#userInfo p').innerHTML = `Hi, My name is`;
+                    document.querySelector('#userInfo h1').innerHTML = `${user.results[0].name.first} ${user.results[0].name.last}`;
+                    break;
+                }
+                case 1: {
+                    document.querySelector('#userInfo p').innerHTML = `My email address is`;
+                    document.querySelector('#userInfo h1').innerHTML = `${user.results[0].email}`;
+                    break;
+                }
+            }
+        }
+  
+        getData();
+    </script>
+</body>
+
+</html>

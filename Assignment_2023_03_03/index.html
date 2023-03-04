@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <title>Random Coctail Info</title>
+    <style>
+        body {
+            background: rgb(233, 190, 224);
+            background: linear-gradient(180deg, rgba(233, 190, 224, 1) 0%, rgba(255, 0, 185, 1) 100%);
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="welcome text-center">
+            <h1 class="my-4">Enjoy our coctails!</h1>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="left col-6">
+                <h3></h3>
+                <div class="photo col-9 mx-auto"></div>
+
+            </div>
+            <div class="right col-6 text-start">
+                <h3 class="mt-5 mb-3">Ingredients:</h3>
+                <div class="info"></div>
+            </div>
+        </div>
+        <input class="btn btn-secondary text-center my-5" type="reset" value="Another Coctail" onclick="getCoctail()">
+    </div>
+    <script>
+        const getCoctail = () => {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+            .then(res => res.json())
+            .then(res => {
+                const info = document.querySelector('.info');
+                info.innerHTML = '';
+                const data = res.drinks[0];
+                document.querySelector('.photo').innerHTML = `<img src=${data.strDrinkThumb} width=100% alt="image of coctail">`;
+                document.querySelector('.left h3').textContent = `${data.strDrink}`;
+                const entries = Object.entries(data);
+                const ingredients = entries.filter(([key, value]) => (key.indexOf('strIngredient') !== -1) && (value !== null));
+                const measure = entries.filter(([key, value]) => (key.indexOf('strMeasure') !== -1));
+                const ingredientsHtml = ingredients.map(([, value], index) => {
+                    const measureValue = measure[index][1] !== null ? measure[index][1] : 'to taste';
+                    return `<li>${value} - ${measureValue}</li>`;
+                }).join('');
+                info.innerHTML = ingredientsHtml;
+                info.innerHTML += `<p class="my-5"> This drink served in <i>${data.strGlass}</i>`;
+                info.innerHTML += `<p>${data.strAlcoholic !== "Alcoholic" ? 'Non Alcoholic' : 'Caution: This drink contains Alcohol. Sold only to persons over the age of 21.'}</p>`;
+            })
+        }
+
+        getCoctail();
+    </script>
+</body>
+
+</html>
+
