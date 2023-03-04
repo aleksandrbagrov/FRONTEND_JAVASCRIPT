@@ -88,6 +88,7 @@
   width: 100%;
   padding: 15px 0;
   text-align: center;
+  overflow: hidden;
 }
 
 .box .content h1 {
@@ -96,6 +97,13 @@
   font-size: 50px;
   padding-left: 30px;
   padding-top: 30px;
+}
+.box .content h3 {
+  display: block;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .box .content div {
@@ -108,10 +116,73 @@
   text-align: left;
 }
 
+.box .content div ul li:nth-child(1)::before {
+    content: '\F287';
+    font-family: bootstrap-icons;
+    color: yellow;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.box .content div ul li:nth-child(2)::before {
+  content: '\F287';
+  font-family: bootstrap-icons;
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.box .content div ul li:nth-child(3)::before {
+  content: '\F287';
+  font-family: bootstrap-icons;
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.box .content div ul li:nth-child(4)::before {
+  content: '\F287';
+  font-family: bootstrap-icons;
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.box .content div ul li:nth-child(5)::before {
+  content: '\F287';
+  font-family: bootstrap-icons;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
 .box .content img {
-  height: 13vh;
+  height: 40px;
   width: 40%;
   object-fit: contain;
+}
+
+table tr {
+  height: 47px;
+}
+
+table tr td {
+  width: 30%;
+  border-bottom: 1px solid gray;
+}
+
+.name {
+  text-align: start;
+  line-height: 40px;
+}
+
+.price {
+  text-align: end;
 }
 
 * {
