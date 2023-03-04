@@ -13,7 +13,7 @@
         body {
             background: rgb(233, 190, 224);
             background: linear-gradient(180deg, rgba(233, 190, 224, 1) 0%, rgba(255, 0, 185, 1) 100%);
-            background-repeat: no-repeat;
+            background-repeat: no-repeat / cover;
         }
     </style>
 </head>
@@ -21,7 +21,7 @@
 <body>
     <div class="container text-center">
         <div class="welcome text-center">
-            <h1 class="my-4">Enjoy our coctails!</h1>
+            <h1 class="my-4">Enjoy our cocktails!</h1>
         </div>
         <div class="row d-flex justify-content-center">
             <div class="left col-6">
@@ -34,7 +34,7 @@
                 <div class="info"></div>
             </div>
         </div>
-        <input class="btn btn-secondary text-center my-5" type="reset" value="Another Coctail" onclick="getCoctail()">
+        <input class="btn btn-secondary text-center my-5" type="reset" value="Another Cocktail" onclick="getCoctail()">
     </div>
     <script>
         const getCoctail = () => {
