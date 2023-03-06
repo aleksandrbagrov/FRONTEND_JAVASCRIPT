@@ -13,7 +13,9 @@
         body {
             background: rgb(233, 190, 224);
             background: linear-gradient(180deg, rgba(233, 190, 224, 1) 0%, rgba(255, 0, 185, 1) 100%);
-            background-repeat: no-repeat / cover;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
         }
     </style>
 </head>
@@ -47,8 +49,8 @@
                 document.querySelector('.photo').innerHTML = `<img src=${data.strDrinkThumb} width=100% alt="image of coctail">`;
                 document.querySelector('.left h3').textContent = `${data.strDrink}`;
                 const entries = Object.entries(data);
-                const ingredients = entries.filter(([key, value]) => (key.indexOf('strIngredient') !== -1) && (value !== null));
-                const measure = entries.filter(([key, value]) => (key.indexOf('strMeasure') !== -1));
+                const ingredients = entries.filter(([key, value]) => (key.includes('strIngredient')) && (value));
+                const measure = entries.filter(([key, value]) => (key.includes('strMeasure')));
                 const ingredientsHtml = ingredients.map(([, value], index) => {
                     const measureValue = measure[index][1] !== null ? measure[index][1] : 'to taste';
                     return `<li>${value} - ${measureValue}</li>`;

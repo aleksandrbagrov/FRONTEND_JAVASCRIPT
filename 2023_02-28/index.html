@@ -55,12 +55,37 @@
         </div>
         <div class="card-body">
             <ul id="getInfo" class="d-flex justify-content-center"">
-                <li name=" name" onmouseenter="getData(event)" value="0"><i class="bi bi-person-vcard"></i></li>
-                <li name="email" onmouseenter="getData(event)" value="1"><i class="bi bi-envelope"></i></li>
-                <li name="birthday" onmouseenter="getData(event)" value="2"><i class="bi bi-calendar-week"></i></li>
-                <li name="location" onmouseenter="getData(event)" value="3"><i class="bi bi-geo"></i></li>
-                <li name="telephone" onmouseenter="getData(event)" value="4"><i class="bi bi-telephone"></i></li>
-                <li name="password" onmouseenter="getData(event)" value="5"><i class="bi bi-lock"></i></li>
+                <li name=" name" onmouseenter="getData(event)" value="0">
+                <i class="bi bi-person-vcard"></i>
+                <span></span>
+                <i class="bi bi-person-vcard active"></i>
+                </li>
+                <li name="email" onmouseenter="getData(event)" value="1">
+                    <i class="bi bi-envelope"></i>
+                    <span></span>
+                    <i class="bi bi-envelope active"></i>
+                </li>
+                <li name="birthday" onmouseenter="getData(event)" value="2">
+                    <i class="bi bi-calendar-week"></i>
+                    <span></span>
+                    <i class="bi bi-calendar-week active"></i>
+
+                </li>
+                <li name="location" onmouseenter="getData(event)" value="3">
+                    <i class="bi bi-geo"></i>
+                    <span></span>
+                    <i class="bi bi-geo active"></i>
+                </li>
+                <li name="telephone" onmouseenter="getData(event)" value="4">
+                    <i class="bi bi-telephone"></i>
+                    <span></span>
+                    <i class="bi bi-telephone"></i>
+                </li>
+                <li name="password" onmouseenter="getData(event)" value="5">
+                    <i class="bi bi-lock"></i>
+                    <span></span>
+                    <i class="bi bi-lock"></i>
+                </li>
             </ul>
         </div>
     </div>
@@ -76,8 +101,16 @@
                     document.querySelector('.photo-box').innerHTML = `<img src="${atsakymas.results[0].picture.large}" class="rounded-circle mt-3 p-2 border border-secondary" alt="">`;
                     document.querySelector('#userInfo p').innerHTML = `Hi, My name is`;
                     document.querySelector('#userInfo h1').innerHTML = `${atsakymas.results[0].name.first} ${atsakymas.results[0].name.last}`;
+
+
+                    document.querySelector('li:nth-child(1)').dataset.text = person.name.first + ' ' + person.name.last;
+                    document.querySelector('li:nth-child(2)').dataset.text = person.email;
+                    document.querySelector('li:nth-child(3)').dataset.text = person.dob.date.split('T')[0];
+                    document.querySelector('li:nth-child(4)').dataset.text = person.location.street.number + ' ' + person.location.street.name;
+                    document.querySelector('li:nth-child(5)').dataset.text = person.cell;
+                    document.querySelector('li:nth-child(6)').dataset.text = person.login.password;
                 });
-                return atsakymas;
+            return atsakymas;
         }
 
         const user = getUser();
@@ -101,7 +134,7 @@
                 }
             }
         }
-  
+
         getData();
     </script>
 </body>
