@@ -1,7 +1,6 @@
 {
   "name": "2023_03_07",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +10,7 @@
   "dependencies": {
     "chalk": "^5.2.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {},
+  "description": ""
 }
