@@ -1,6 +1,25 @@
 import { faker } from '@faker-js/faker';
+import fs from 'node:fs/promises';
 
-const randomName = faker.name.fullName();
-const randomEmail = faker.internet.email();
+import * as readline from 'node:readline/promises';
+import { stdin as input, stdout as output } from 'node:process';
 
-console.log(`Random name: ${randomName}   Random email: ${randomEmail}`);
+
+
+const rl = readline.createInterface({ input, output });
+
+
+console.log('Please enter your login and password');
+const admLogin = await rl.question('login: ');
+const admPassword = await rl.question('password: ');
+
+const name = faker.name.fullName();
+const password= faker.internet.password();
+const eMail = faker.internet.email();
+const birthdate = faker.date.birthdate();
+const person = `${name},${password},${eMail},${birthdate}\n`;
+await fs.appendFile('person.txt', person);
+
+rl.close();
+
+console.log(person);
