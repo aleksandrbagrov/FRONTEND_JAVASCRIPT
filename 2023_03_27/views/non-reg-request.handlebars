@@ -1,0 +1,15 @@
+<h2>Please enter key phrase</h2>
+{{#if message}}
+    <div class="alert alert-danger">{{message}}</div>
+{{/if}}
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label>Phrase:</label>
+        <input type="text" name="phrase" class="form-control" />
+    </div>
+    {{!-- <div class="mb-3">
+        <label>Nuotrauka:</label>
+        <input type="file" name="phrase" class="form-control" />
+    </div> --}}
+    <button class="btn btn-primary">Ieškoti</button>
+</form>

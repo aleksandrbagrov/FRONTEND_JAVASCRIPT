@@ -1,0 +1,13 @@
+.ganikla {
+    display: flex;
+    width:90%;
+    .dalys {
+        width: 50%;
+        display: flex;
+        gap: 10px;
+        border: 1px solid yellowgreen;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}

@@ -1,0 +1,125 @@
+<div class="grade col-6">
+    <form action="/payment">
+        <div class="mb-2">
+            <label>Please Select Meat Product and Quantity</label>
+            <div class="row g-3 align-items-center">
+                <div class="col-2">
+                    <select class="form-control" name="meatProduct">
+                        {{#each meat}}
+
+                        <option value="{{product}}">{{product}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-auto" id="quantity">
+                    <span>{{quantity}}</span>
+                </div>
+                <div class="col-auto" id="price">
+                    <span>{{price}}</span>
+                </div>
+                <div class="col-2" id="meatQ">
+                    <input type="number" name="meat" class="form-control" />
+                </div>
+                <div class="col-auto" id="orderMeat">
+                    <input class="btn btn-primary" type="button" onmousedown="chooseProduct(event)" value="Order">
+                </div>
+            </div>
+            {{!-- <button class="btn btn-primary">Buy</button> --}}
+        </div>
+
+        <div class="mb-2">
+            <label>Please Select Milk Product and Quantity</label>
+            <div class="row g-3 align-items-center">
+                <div class="col-2">
+                    <select class="form-control" onchange="chooseProduct(event)" name="milkProduct">
+                        {{#each milk}}
+
+                        <option value="{{product}}">{{product}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-auto" id="quantity">
+                    <span>{{quantuty}}</span>
+                </div>
+                <div class="col-auto" id="price">
+                    <span>{{price}}</span>
+                </div>
+                <div class="col-2" id="milkQ">
+                    <input type="number" name="milk" class="form-control" />
+                </div>
+                <div class="col-auto" id="orderMilk">
+                    <input class="btn btn-primary" type="button" onmousedown="chooseProduct(event)" value="Order">
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label>Please Select Bread Product and Quantity</label>
+            <div class="row g-3 align-items-center">
+                <div class="col-2">
+                    <select class="form-control" onchange="chooseProduct(event)" name="breadProduct">
+                        {{#each bread}}
+
+                        <option value="{{product}}">{{product}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-auto" id="quantity">
+                    <span>{{quantuty}}</span>
+                </div>
+                <div class="col-auto" id="price">
+                    <span>{{price}}</span>
+                </div>
+                <div class="col-2" id="breadQ">
+                    <input type="number" name="bread" class="form-control" />
+                </div>
+                <div class="col-auto" id="orderBread">
+                    <input class="btn btn-primary" type="button" onmousedown="chooseProduct(event)" value="Order">
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label>Please Select Chemical Product and Quantity</label>
+            <div class="row g-3 align-items-center">
+                <div class="col-2">
+                    <select class="form-control" onchange="chooseProduct(event)" name="chemicalProduct">
+                        {{#each chemical}}
+
+                        <option value="{{product}}" name="{{product}}">{{product}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-auto" id="quantity">
+                    <span>{{quantuty}}</span>
+                </div>
+                <div class="col-auto" id="price">
+                    <span>{{price}}</span>
+                </div>
+                <div class="col-2" id="chemicalQ">
+                    <input type="number" name="chemical" class="form-control" />
+                </div>
+                <div class="col-auto" id="orederChemical">
+                    <input class="btn btn-primary" type="button" onmousedown="chooseProduct(event)" value="Order">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary">Buy</button>
+    </form>
+</div>
+<div class="grade col-4 mx-5">
+    {{#each posts}}
+    <div>
+        <li class="d-flex gap-3 my-2">
+            <span>{{group}}</span>
+            <span>{{product}}</span>
+            <span>{{quantity}}</span>
+            <span>{{price}}</span>
+        </li>
+    </div>
+    {{/each}}
+</div>

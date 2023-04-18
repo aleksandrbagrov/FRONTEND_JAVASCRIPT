@@ -1,0 +1,32 @@
+<h1>Registruoti vartotojai</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>Vardas</th>
+            <th>Pavardė</th>
+            <th>El. pašto adresas</th>
+            <th>Slaptažodis</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td><img src="{{photo}}" alt="avatar" /></td>
+            <td>{{name}}</td>
+            <td>{{last_name}}</td>
+            <td>{{email}}</td>
+            <td>{{password}}</td>
+            <td>
+                <a href="/edit-user/{{@key}}" class="btn btn-primary">Redaguoti</a>
+            </td>
+            <td>
+                {{#unless current}}
+                    <a href="/delete-user/{{@key}}" class="btn btn-danger">Ištrinti</a>
+                {{/unless}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

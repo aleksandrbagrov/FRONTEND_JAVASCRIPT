@@ -3,7 +3,12 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 import { engine } from 'express-handlebars';
 
+const prodstring = fs.readFile('./databaseProducts', 'utf-8'); 
+const productsArr = JSON.parse(prodstring);
+console.log(productsArr);
+
 const app = express();
+
 
 //Konfigūracinė eilutė kuri yra būtina norint POST metodu priimti duomenis
 app.use(express.urlencoded({
@@ -15,21 +20,6 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 
 app.get('/', async (req, res) => {
-    // let data = await fs.readFile('./database.json', 'utf-8');
-    // data = JSON.parse(data);
-
-    // data = data.map(post => `
-    //     <div>
-    //         <img src="${post.photo}" alt="${post.title}" />
-    //         <h3>${post.title}</h4>
-    //         <p>${post.excerpt}</p>
-    //     </div>
-    // `);
-
-    // let html = '<h1>Naujausi įrašai</h1>' + data.join('');
-
-    // res.send(html);
-
     let data = await fs.readFile('./database.json', 'utf-8');
     data = JSON.parse(data);
 
