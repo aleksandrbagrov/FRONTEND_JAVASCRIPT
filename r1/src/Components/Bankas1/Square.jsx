@@ -33,11 +33,10 @@ export default function Square({ client, setClient }) {
 
     return (
         <div className="client">
-
             <div className='name'>{client.name}</div>
             <div className='lname'>{client.lname}</div>
             <div className='balance'>{client.balance.toFixed(2)}</div>
-            <div className='operational-ammount'><input id="elem1" type="text" value={text1} onChange={handleChange1} class="form-control" /></div>
+            <div className='operational-ammount'><input id="elem1" type="text" value={text1} onChange={handleChange1} /></div>
             <div className='operation'>
                 <button className="green small" onClick={addSum}>Prideti</button>
                 <button className="yellow small" onClick={subtractSumm}>Nuskaičiuoti</button>

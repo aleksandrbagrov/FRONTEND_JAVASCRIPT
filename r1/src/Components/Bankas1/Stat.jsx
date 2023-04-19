@@ -3,7 +3,7 @@ export default function Stat({ clients }) {
     return (
         <div style={{
             position: 'relative',
-            top: '-785px',
+            top: '-637px',
             right: '-442px',
             width: '300px',
             border: '1px solid white',
