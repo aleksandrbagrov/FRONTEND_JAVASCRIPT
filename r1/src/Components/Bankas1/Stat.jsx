@@ -1,23 +1,14 @@
 export default function Stat({ clients }) {
 
     return (
-        <div style={{
-            position: 'relative',
-            top: '-637px',
-            right: '-442px',
-            width: '300px',
-            border: '1px solid white',
-            padding: '15px',
-            fontFamily: 'monospace',
-            fontSize: '50px',
-            color: "yellowgreen",
-        }}>
-
+        <div className="stat">
+            <p>Total Customers:  <span>{clients?.length}</span></p>
+            <p>Total customers funds:   <span>
             {
-                /* {('' + sq.length).padStart(2, '0')} */
-                clients?.reduce((acc, client) => acc + client.balance, 0).toFixed(2)
+                clients?.reduce((acc, client) => acc + client.balance, 0).toFixed(2).toString()
             }
-
+            </span><span> €</span>
+            </p>
 
         </div>
     )
