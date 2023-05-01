@@ -1,4 +1,3 @@
-
 import './Components/Bankas1/App.scss';
 import { v4 as uuidv4 } from 'uuid';
 import Square from './Components/Bankas1/Square';

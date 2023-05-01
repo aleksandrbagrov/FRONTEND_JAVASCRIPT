@@ -1,6 +1,17 @@
 {
   "dependencies": {
+    "express": "^4.18.2",
     "through2": "^4.0.2",
     "uuid": "^9.0.0"
-  }
+  },
+  "name": "frontend_javascript",
+  "description": "<h1>Sveiki visi</h1>\r <h2>Tai bus mano paskaitų medžiaga</h2>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
