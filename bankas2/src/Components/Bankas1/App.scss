@@ -1,7 +1,8 @@
 $mono: 'DM Mono',
-monospace;
+    monospace;
 $zana: 'Noto Sans Zanabazar Square',
-sans-serif;
+    sans-serif;
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -29,7 +30,8 @@ code {
 }
 
 .App-header {
-    background-color: #282c34;
+    width: 100%;
+    background-color: white;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -37,6 +39,7 @@ code {
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    position: absolute;
 }
 
 .App-link {
@@ -47,19 +50,21 @@ code {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
 }
 
 .squares {
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
     margin: 20px;
+
     .square {
         width: 120px;
         height: 120px;
@@ -72,7 +77,8 @@ code {
         background-color: #80808070;
         border: 2px solid #808080;
         transition: all 0.5s;
-        position: relative;
+
+        // position: relative;
         &.zana {
             span {
                 font-family: $zana;
@@ -80,20 +86,25 @@ code {
                 line-height: 40px;
             }
         }
+
         &.spin {
             animation: App-logo-spin infinite 20s linear;
+
             span {
                 animation: App-logo-spin infinite 20s linear;
                 animation-direction: reverse;
             }
         }
+
         &.spin-back {
             animation: App-logo-spin infinite 20s linear;
             animation-direction: reverse;
+
             span {
                 animation: App-logo-spin infinite 20s linear;
             }
         }
+
         &.egg {
             display: flex;
             justify-content: center;
@@ -102,12 +113,15 @@ code {
             height: 180px;
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
         }
+
         &.big {
             width: 250px;
             height: 250px;
         }
-        &.smal {
-            width: 100px;
+
+        &.small {
+            width: 50px;
+            height: 50px;
         }
     }
 }
@@ -118,15 +132,16 @@ $red: crimson;
 $pink: pink;
 $yellow: darkorange;
 $green: greenyellow;
+
 button {
     display: inline-block;
-    min-width: 120px;
+    min-width: 100px;
     margin: 10px;
-    padding: .75rem 1.25rem;
+    padding: .5rem 1rem;
     border-radius: 10rem;
     color: #fff;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1rem;
     letter-spacing: .15rem;
     transition: all .3s;
     position: relative;
@@ -135,6 +150,7 @@ button {
     border: 1px solid $gray;
     outline: none;
     cursor: pointer;
+
     &:after {
         content: '';
         position: absolute;
@@ -146,6 +162,7 @@ button {
         border-radius: 10rem;
         z-index: -2;
     }
+
     &:before {
         content: '';
         position: absolute;
@@ -158,65 +175,307 @@ button {
         border-radius: 10rem;
         z-index: -1;
     }
+
     &:hover {
         color: #fff;
+
         &:before {
             width: 100%;
         }
     }
+
     &.blue {
         border: 1px solid $blue;
+
         &:after {
             background-color: $blue;
         }
+
         &:before {
             background-color: darken($blue, 15%);
         }
     }
+
     &.red {
         border: 1px solid $red;
+        font-size: 10px;
+        padding: .3rem 0.5rem;
+
         &:after {
             background-color: $red;
         }
+
         &:before {
             background-color: darken($red, 15%);
         }
     }
+
     &.pink {
         border: 1px solid $pink;
+
         &:after {
             background-color: $pink;
         }
+
         &:before {
             background-color: darken($pink, 15%);
         }
     }
+
     &.yellow {
         border: 1px solid $yellow;
+
         &:after {
             background-color: $yellow;
         }
+
         &:before {
             background-color: darken($yellow, 15%);
         }
     }
+
     &.green {
         border: 1px solid $green;
+
         &:after {
             background-color: $green;
         }
+
         &:before {
             background-color: darken($green, 15%);
         }
     }
+
     &.small {
-        padding: .7rem .7rem;
+        padding: .3rem .3rem;
         border-radius: 10rem;
         color: #fff;
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 0.6rem;
         letter-spacing: .1rem;
         line-height: 1;
     }
 }
 
+input {
+    font-family: $mono;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    background-color: #61dafb;
+    padding: 5px 7px;
+    border-radius: 5px;
+    color: white;
+    margin: 3px;
+
+    &[type=color] {
+        width: 50px;
+        height: 50px;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    &[type=range] {
+        border: none;
+        padding: 0;
+    }
+}
+
+.ribbon {
+    width: 100%;
+    height: 100px;
+    background: #61dafb;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .logo {
+        width: 90px;
+        height: 90px;
+        background-color: yellow;
+        position: absolute;
+        top: 0;
+        left: 200px;
+    }
+
+    p {
+        margin: 0 200px;
+        font-size: 40px;
+        font-weight: 500;
+    }
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    border: 1px solid rgb(209, 17, 17);
+    padding: 5px;
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 100;
+    color: blue;
+    margin: 10px 0;
+
+    p {
+        margin: 0 20px;
+    }
+}
+
+
+fieldset {
+    border: 1px solid skyblue;
+    margin: 10px;
+
+    legend {
+        color: white;
+    }
+}
+
+.clients {
+    font-size: 20px;
+    width: 80%;
+    height: 400px;
+    background-color: #fff;
+    overflow: auto;
+
+    .client {
+        width: 100%;
+        display: flex;
+        margin: 5 20px;
+        justify-content: left;
+        color: black;
+        background-color: #e1dede;
+
+        .name {
+            text-align: left;
+            width: 10%;
+            margin: 5px 15px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .lname {
+            text-align: left;
+            width: 13%;
+            margin: 5px 15px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .balance {
+            justify-content: right;
+            width: 15%;
+            margin: 5px 15px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .operational-ammount {
+            width: 17%;
+            align-items: flex-end;
+            margin: 5px 15px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+
+            input {
+                width: 60%;
+                text-align: right;
+            }
+
+        }
+
+        .operation {
+            width: auto;
+            margin: 5px 15px;
+            padding: 5px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            button {
+                margin: 2px;
+            }
+        }
+    }
+}
+
+.clients-header {
+    font-size: 20px;
+    display: flex;
+    width: 80%;
+    height: 70px;
+    background-color: #fff;
+    overflow: auto;
+    margin: 5px 20px;
+    justify-content: left;
+    color: black;
+    border: 1px solid rgb(224, 18, 18);
+
+    .name {
+        text-align: left;
+        width: 10%;
+        margin: 5px 15px;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .lname {
+        text-align: left;
+        width: 13%;
+        margin: 5px 15px;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .balance {
+        justify-content: right;
+        width: 15%;
+        margin: 5px 15px;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .operational-ammount {
+        width: 17%;
+        align-items: flex-end;
+        margin: 5px 15px;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+
+        input {
+            width: 60%;
+            text-align: right;
+        }
+
+    }
+
+    .operation {
+        width: auto;
+        margin: 5px 15px;
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        button {
+            margin: 2px;
+        }
+    }
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+}

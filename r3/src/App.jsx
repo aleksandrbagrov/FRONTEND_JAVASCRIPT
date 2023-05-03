@@ -1,38 +1,8 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import './App.css';
-
-function App() {
-
-
-  const [animal, setAnimal] = useState('');
-
-
-  useEffect(() => {
-
-    axios.get('http://localhost:3003/animal/Vilkai')
-    .then(res => {
-      console.log(res);
-
-      setAnimal(res.data.text);
-    })
-
-
-  }, []);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>SRVER</h1>
-
-
-        <h1>Hello, {animal} !</h1>
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.scss';
 import Create from './Components/Create';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { crudCreate, crudDelete, crudRead, crudUpdate } from './Utils/localStorage';
 import List from './Components/List';
 import Edit from './Components/Edit';
 import Delete from './Components/Delete';
@@ -40,12 +10,11 @@ import Messages from './Components/Messages';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
-const key = 'ClientsDb';
 const url = 'http://localhost:3003/clients';
 
 function App() {
 
-  const [lastUpdateTime, setLastUpdateTime] = useState(Date.now());
+
   const [data, setData] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [editModalData, setEditModalData] = useState(null);
@@ -61,10 +30,10 @@ function App() {
 
   useEffect(() => {
     axios.get(url)
-    .then(res => {
-      setData(res.data.clients.map((c, i) => ({ ...c, row: i, show: true })));
-    })
-  }, [lastUpdateTime]);
+      .then(res => {
+        setData(res.data.clients.map((c, i) => ({ ...c, row: i, show: true, pid: null })));
+      });
+  }, []);
 
 
 
@@ -73,15 +42,20 @@ function App() {
     if (null === createData) {
       return;
     }
-
-    axios.post(url, {client: createData})
-    .then(res => {
-      msg(...res.data.message);
-    })
-
-    crudCreate(key, createData);
-    setLastUpdateTime(Date.now());
+    const promiseId = uuidv4();
+    setData(c => [...c, {
+      ...createData,
+      show: true,
+      row: c.length - 1,
+      id: promiseId,
+      pid: promiseId
+    }]);
     msg('New client was created', 'ok');
+
+    axios.post(url, {client: createData, promiseId})
+    .then(res => {
+      setData(c => c.map(c => c.pid === res.data.promiseId ? {...c, pid: null, id: res.data.id} : {...c}));
+    });
   }, [createData]);
 
 
@@ -89,9 +63,15 @@ function App() {
     if (null === editData) {
       return;
     }
-    crudUpdate(key, editData, editData.id);
-    setLastUpdateTime(Date.now());
+    const promiseId = uuidv4();
+
+    setData(c => c.map(d => d.id === editData.id ? {...d, ...editData, pid: promiseId} : {...d}))
     msg('Client was updated', 'ok');
+
+    axios.put(url + '/' + editData.id, { client: editData, promiseId})
+      .then(res => {
+        setData(c => c.map(c => c.pid === res.data.promiseId ? {...c, pid: null} : {...c}));
+      });
   }, [editData]);
 
 
@@ -99,9 +79,13 @@ function App() {
     if (null === deleteData) {
       return;
     }
-    crudDelete(key, deleteData.id);
-    setLastUpdateTime(Date.now());
+    setData(c => c.filter(c => c.id !== deleteData.id));
     msg('Client was removed', 'info');
+
+    axios.delete(url + '/' + deleteData.id)
+      .then(res => {
+        //
+      });
   }, [deleteData]);
 
   useEffect(() => {
@@ -163,16 +147,7 @@ function App() {
         setData(d => d.map(c => ({ ...c, show: true })));
     }
   }
-        
 
-
-
-      </header>
-    </div>
-  );
-}
-
-export default App;
   return (
     <>
       <nav className="navbar navbar-light bg-light">

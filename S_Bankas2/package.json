@@ -5,6 +5,7 @@
     "nodemon": "^2.0.22",
     "uuid": "^9.0.0"
   },
+  "type": "module",
   "scripts": {
     "start": "nodemon app.js"
   }
