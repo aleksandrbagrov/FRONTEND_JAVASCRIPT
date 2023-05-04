@@ -1,0 +1,14 @@
+import './modal.scss';
+
+export default function modalAdd({ active, setActive, modalClient, transaction }) {
+
+    return (
+        <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
+            <div className={active ? 'modal-content active' : 'modal-content'} onClick={e => e.stopPropagation()}>
+                {console.log(modalClient)}
+                <h4><span>{modalClient?.name}</span> <spam>{modalClient?.lname}</spam> bank account was replenished with <span>{transaction}</span> €</h4>
+            </div>
+        </div>
+    )
+
+}
