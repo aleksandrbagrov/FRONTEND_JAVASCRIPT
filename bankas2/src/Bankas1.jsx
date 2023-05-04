@@ -53,8 +53,16 @@ function App() {
             .then(res => {
                 setClient(res.data);
                 setModalActive(false);
+                setName('');
+                setLname('');
             });
     }
+
+    // useEffect(() => {
+    //     if (clients.length === 0) {
+    //         return
+    //     }
+    // }, [clients])
 
     useEffect(() => {
         axios.get(url)
