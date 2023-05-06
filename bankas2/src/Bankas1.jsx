@@ -97,20 +97,6 @@ function App() {
     }, []);
 
 
-    // useEffect(() => {
-    //     if (null === clients) {
-    //         return;
-    //     }
-
-    //     axios.post(url, clients);
-    //     // .then(res => {
-    //     //   setClient(c => c.map(c => c.pid === res.data.promiseId ? {...c, pid: null, id: res.data.id} : {...c}));
-    //     // });
-
-    //     // localStorage.setItem('clients', JSON.stringify(clients));
-
-    // }, [clients]);
-
 
     return (
         <div className="App">

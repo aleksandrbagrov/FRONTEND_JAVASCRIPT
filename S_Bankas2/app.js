@@ -40,6 +40,19 @@ app.post('/clients', (req, res) => {
   console.log('client', client);
   const data = dataString ? JSON.parse(dataString) : [];
   data.push(client);
+
+  data?.sort((a, b) => {
+    const nameA = a.lname.toUpperCase();
+    const nameB = b.lname.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+
   const newDataString = JSON.stringify(data);
   writeFileSync('./Data/clients.json', newDataString);
 
@@ -51,11 +64,11 @@ app.put('/clients/addfunds/:id', (req, res) => {
   data = JSON.parse(data);
 
   data = data.map(client =>
-    client.id === req.params.id ? { ...client, balance:  Number((client.balance + Number(req.body.funds)).toFixed(2)) } : { ...client }
+    client.id === req.params.id ? { ...client, balance: Number((client.balance + Number(req.body.funds)).toFixed(2)) } : { ...client }
   );
 
   const writtenData = JSON.stringify(data);
-  
+
   writeFileSync('./Data/clients.json', writtenData);
   res.json(data);
 });
@@ -65,11 +78,11 @@ app.put('/clients/subtructfunds/:id', (req, res) => {
   data = JSON.parse(data);
 
   data = data.map(client =>
-    client.id === req.params.id ? { ...client, balance:  Number((client.balance - Number(req.body.funds)).toFixed(2)) } : { ...client }
+    client.id === req.params.id ? { ...client, balance: Number((client.balance - Number(req.body.funds)).toFixed(2)) } : { ...client }
   );
 
   const writtenData = JSON.stringify(data);
-  
+
   writeFileSync('./Data/clients.json', writtenData);
   res.json(data);
 });
@@ -82,7 +95,7 @@ app.delete('/clients/deleteaccount/:id', (req, res) => {
   data = data.filter(client => client.id !== req.params.id);
 
   const writtenData = JSON.stringify(data);
-  
+
   writeFileSync('./Data/clients.json', writtenData);
   res.json(data);
 });
