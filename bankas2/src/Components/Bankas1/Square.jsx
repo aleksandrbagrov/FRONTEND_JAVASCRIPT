@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function Square({ client, setClient, setModalEnterActive, setModalDeleteActive, setModalClient, setModalAddActive, setModalNotDeleteActive, setModalDeductActive, setModalNotDeductActive, setTransaction }) {
+export default function Square({ client, setClient, setModalEnterActive, setModalDeleteActive, setModalClient, radio, setModalAddActive, setModalNotDeleteActive, setModalDeductActive, setModalNotDeductActive, setTransaction }) {
 
     const [text1, setText1] = useState('0.00');
 
@@ -17,10 +17,18 @@ export default function Square({ client, setClient, setModalEnterActive, setModa
         if (!isNaN(Number(text1))) {
             setModalClient(client);
             console.log('balance', client.balance)
-            //setClient(clients => clients.map(s => client.id === s.id ? { ...s, balance: client.balance ? Number((client.balance + Number(text1)).toFixed(2)) : 0 } : { ...s }));
             axios.put('http://localhost:3003/clients/addfunds/' + id, { funds: text1})
             .then(res => {
-                setClient(res.data)
+                switch (radio) {
+                    case 'B':
+                        setClient(res.data?.filter(c => c.balance !== 0));
+                        break;
+                    case 'C':
+                        setClient(res.data?.filter(c => c.balance === 0));
+                        break;
+                    default:
+                        setClient(res.data);
+                } 
             });
 
             setTransaction(Number(text1).toFixed(2));
@@ -39,11 +47,18 @@ export default function Square({ client, setClient, setModalEnterActive, setModa
             setModalClient(client);
             const deduction = Number((client.balance - Number(text1)).toFixed(2)) //>= 0 ? Number((client.balance - Number(text1)).toFixed(2)) : client.balance;
             if (deduction >= 0) {
-                // setClient(clients => clients.map(s => client.id === s.id ? { ...s, balance: deduction } : { ...s }));
-                
                 axios.put('http://localhost:3003/clients/subtructfunds/' + id, { funds: text1})
                 .then(res => {
-                    setClient(res.data)
+                    switch (radio) {
+                        case 'B':
+                            setClient(res.data?.filter(c => c.balance !== 0));
+                            break;
+                        case 'C':
+                            setClient(res.data?.filter(c => c.balance === 0));
+                            break;
+                        default:
+                            setClient(res.data);
+                    } 
                 });
                 
                 setTransaction(Number(text1).toFixed(2));

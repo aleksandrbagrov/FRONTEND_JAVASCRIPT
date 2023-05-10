@@ -100,39 +100,6 @@ app.delete('/clients/deleteaccount/:id', (req, res) => {
   res.json(data);
 });
 
-
-
-// client.balance + +req.body.funds
-
-// app.put('/clients/:id', (req, res) => {
-//   let data = readFileSync('./Data/clients.json', 'utf8');
-//   data = JSON.parse(data);
-
-//   data = data.map((c) =>
-//     c.id === req.params.id ? { ...c, ...req.body.client, id: req.params.id } : { ...c }
-//   );
-
-//   data = JSON.stringify(data);
-//   writeFileSync('./Data/clients.json', data);
-
-//   res.json({
-//     message: 'ok',
-//     promiseId: req.body.promiseId,
-//   });
-// });
-
-// app.delete('/clients/:id', (req, res) => {
-//   let data = readFileSync('./Data/clients.json', 'utf8');
-//   data = JSON.parse(data);
-//   data = data.filter((c) => c.id !== req.params.id);
-//   data = JSON.stringify(data);
-//   writeFileSync('./Data/clients.json', data);
-
-//   res.json({
-//     message: 'OK',
-//   });
-// });
-
 app.listen(port, () => {
   console.log(`S3 server on port ${port}`);
 });
