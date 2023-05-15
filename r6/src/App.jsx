@@ -1,16 +1,16 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import './buttons.scss';
 import { Data } from './Store';
 import './app.scss';
+import Nav from './Components/Nav';
+import Main from './Components/Main';
 
-function App() {
+export default function App() {
+
   return (
     <Data>
-      <div className="App">
-        <header className="App-header">
-
-        </header>
-      </div>
+      <Nav />
+      <Main />
     </Data>
   );
 }
-
-export default App;
