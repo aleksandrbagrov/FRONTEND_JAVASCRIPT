@@ -1,9 +1,21 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { Store } from "../Store";
 
 export default function Login() {
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const {setLoginRequest} = useContext(Store);
+
+  const doLogin = _ => {
+    setLoginRequest({
+      action: 'login',
+      email,
+      pass
+    });
+    // setEmail('');
+    // setPass('');
+  }
 
 
   return (
@@ -28,7 +40,7 @@ export default function Login() {
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" value={pass} onChange={e => setPass(e.target.value)} />
               </div>
-              <button type="button" class="red">Login</button>
+              <button type="button" class="red" onClick={doLogin}>Login</button>
             </div>
           </div>
         </div>

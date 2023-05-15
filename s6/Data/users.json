@@ -1,11 +1,26 @@
 [
     {
-        "email": "briedis@gmail.com", "pass": "202cb962ac59075b964b07152d234b70", "role": "admin"
+        "id": 1,
+        "email": "briedis@gmail.com",
+        "pass": "202cb962ac59075b964b07152d234b70",
+        "role": "admin",
+        "color": "crimson",
+        "session": ""
     },
     {
-        "email": "bebras@gmail.com", "pass": "202cb962ac59075b964b07152d234b70", "role": "user"
+        "id": 2,
+        "email": "bebras@gmail.com",
+        "pass": "202cb962ac59075b964b07152d234b70",
+        "role": "user",
+        "color": "skyblue",
+        "session": ""
     },
     {
-        "email": "bersukas@gmail.com", "pass": "202cb962ac59075b964b07152d234b70", "role": "user"
+        "id": 3,
+        "email": "bersuke@gmail.com",
+        "pass": "202cb962ac59075b964b07152d234b70",
+        "role": "user",
+        "color": "pink",
+        "session": ""
     }
 ]

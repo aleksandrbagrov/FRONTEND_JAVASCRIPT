@@ -1,0 +1,45 @@
+@import './variables.module.scss';
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.color-yellow {
+    color: $yellow;
+}
+
+.color-gray {
+    color: $gray;
+}
+
+.color-green {
+    color: $green;
+}
+
+.list-item {
+    padding: 10px;
+    margin: 10px;
+    background-color: lighten($yellow, 10%);
+    input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        &.title {
+            font-size: 26px;
+        }
+        &.height {
+            font-size: 20px;
+            width: 70px;
+        }
+    }
+    select {
+        background-color: lighten($yellow, 10%);
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 20px;
+    }
+}

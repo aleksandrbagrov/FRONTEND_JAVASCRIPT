@@ -35,7 +35,25 @@ app.post('/login', (req, res) => {
 
     const user = data.find(u => u.email === email && u.pass === pass);
 
-    user ? res.json({ message: ['Login is Ok', 'ok'] }) : res.json({ message: ['Invalid login', 'error'] });
+    if(user) {
+        res.json({
+            status: 'login-ok',
+            user: {email: user.email, color: user.color, role: user.role, id: user.id},
+            message: ['Login is Ok', 'ok'] 
+        });
+    }  else {
+        res.json({ message: ['Invalid login', 'error'] })
+    };
+});
+
+// LOGOUT
+
+app.post('/logout/:id', (req, res) => {
+
+    res.json({
+        status: 'logout-ok',
+        message: ['Logout is Ok', 'ok'] 
+    });
 });
 
 
