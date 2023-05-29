@@ -4,12 +4,11 @@ $red: crimson;
 $pink: pink;
 $yellow: darkorange;
 $green: greenyellow;
-
 :export {
-  gray: gray;
-  blue: skyblue;
-  red: crimson;
-  pink: pink;
-  yellow: darkorange;
-  green: greenyellow;
+    gray: $gray;
+    blue: $blue;
+    red: $red;
+    pink: $pink;
+    yellow: $yellow;
+    green: $green;
 }
