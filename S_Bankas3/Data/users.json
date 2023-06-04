@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "email": "briedis@gmail.com",
+        "email": "Admin",
         "pass": "202cb962ac59075b964b07152d234b70",
         "role": "admin",
         "color": "crimson",
@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "email": "bebras@gmail.com",
+        "email": "Bebras",
         "pass": "202cb962ac59075b964b07152d234b70",
         "role": "user",
         "color": "skyblue",
@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "email": "bersuke@gmail.com",
+        "email": "Bersuke",
         "pass": "202cb962ac59075b964b07152d234b70",
         "role": "user",
         "color": "pink",
