@@ -5,6 +5,7 @@ import useUser from './Hooks/useUser';
 import useClients from './Hooks/useClients';
 import { useState } from 'react';
 import useFile from './Hooks/useFile';
+import useStat from './Hooks/useStat';
 
 
 export const Store = createContext();
@@ -17,7 +18,7 @@ export const Data = ({children}) => {
   const [clients, setClient, radio, setRadio, lastUpdate, setLastUpdate] = useClients();
   const [modalActive, setModalActive] = useState(false);
   const [file, readFile, removeFile, setFile] = useFile();
- 
+  const [stat, setLastUpdateStat] = useStat();
 
   useEffect(() => {
     if(loginResponse === null) {
@@ -38,7 +39,6 @@ export const Data = ({children}) => {
 
   }, [loginResponse])
 
-  //[loginResponse, goToPage, setUser]
 
   return (
     <Store.Provider value={{
@@ -49,7 +49,8 @@ export const Data = ({children}) => {
       modalActive, setModalActive,
       radio, setRadio,
       lastUpdate, setLastUpdate,
-      file, readFile, removeFile, setFile
+      file, readFile, removeFile, setFile,
+      stat, setLastUpdateStat
     }}>
       {children}
     </Store.Provider>

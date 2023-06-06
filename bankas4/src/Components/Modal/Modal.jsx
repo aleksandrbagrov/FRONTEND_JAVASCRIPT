@@ -16,13 +16,6 @@ export default function Modal() {
     setFile(null);
 
     useEffect(() => {
-        if ( file !== null) {
-            setFile(null);  
-        }
-        setFile(null);
-    }, []);
-
-    useEffect(() => {
         if (file === null) {
             return;
         }
@@ -66,11 +59,11 @@ export default function Modal() {
             <div className={modalActive ? 'modal-contents active' : 'modal-contents'} onClick={e => e.stopPropagation()}>
                 <h3 style={{ backgroundColor: 'gray' }}>Opening a new account</h3>
                 <h4>Please enter new customer details</h4>
-                <div className='operational-ammount'>
+                <div className='input'>
                     <label className="form-label" style={{ margin: "0 15px" }}>First Name</label>
                     <input type="text" value={name} onChange={doName} />
                 </div>
-                <div className='operational-ammount'>
+                <div className='input'>
                     <label className="form-label" style={{ margin: "0 15px" }}>Family Name</label>
                     <input type="text" value={lname} onChange={doLname} />
                 </div>

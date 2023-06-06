@@ -1,26 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Store } from "../Store";
 
+export default function Stat1() {
 
-// const url = 'http://localhost:3003/stat';
+    const { stat, clients, setLastUpdateStat } = useContext(Store);
 
-export default function Stat() {
-
-    const { stat, setStat, clients } = useContext(Store);
+    useEffect(() => {
+        setLastUpdateStat(Date.now());
+    }, [clients]);
 
     return (
-        <div className="stat">
-            <p>Total Customers:  <span>{clients !== null ? clients?.length.toString() : 0}</span></p>
-            <p>Total customers funds:   <span>
-                {
-                    clients !== null 
-                    ? clients?.reduce((acc, client) => acc + client.amount, 0).toFixed(2).toString()
-                    : 0
-                }
-            </span><span> €</span>
-            </p>
-
-        </div>
+            <div className="stat">
+                <div className="first-row">
+                    <p>Total Customers:  <span>{stat?.clientsNumber}</span></p>
+                    <p>Total customers funds:   <span>{stat?.totalClientsFunds}</span><span> €</span></p>
+                </div>
+                <div className="second-row">
+                    <p>Average Acount Ammount:  <span>{stat?.averageBalance}</span><span> €</span></p>
+                </div>
+            </div>
     )
-
 }

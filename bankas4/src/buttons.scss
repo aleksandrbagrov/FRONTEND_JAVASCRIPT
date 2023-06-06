@@ -4,6 +4,7 @@ $red: crimson;
 $pink: pink;
 $yellow: darkorange;
 $green: greenyellow;
+$bordo: rgb(230, 15, 83);
 
 button:not(.btn) {
     display: inline-block;
@@ -116,32 +117,45 @@ button:not(.btn) {
         }
     }
 
-    &.small {
-        padding: .5rem .5rem;
-        border-radius: 10rem;
-        color: #fff;
-        text-transform: uppercase;
-        font-size: 0.7rem;
-        letter-spacing: .1rem;
-        line-height: 1;
-    }
-
-    &:disabled {
-        border: 1px solid $gray;
+    &.bordo {
+        border: 1px solid $bordo;
 
         &:after {
-            background-color: $gray;
+            background-color: $bordo;
         }
 
         &:before {
-            background-color: darken($gray, 15%);
+            background-color: darken($bordo, 15%);
+        }
+    }
+
+
+        &.small {
+            padding: .5rem .5rem;
+            border-radius: 10rem;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: .1rem;
+            line-height: 1;
         }
 
-        &:hover {
+        &:disabled {
+            border: 1px solid $gray;
+
+            &:after {
+                background-color: $gray;
+            }
 
             &:before {
-                width: 0;
+                background-color: darken($gray, 15%);
+            }
+
+            &:hover {
+
+                &:before {
+                    width: 0;
+                }
             }
         }
     }
-}

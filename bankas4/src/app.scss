@@ -125,8 +125,6 @@ body {
     color: black;
 
     .stat {
-      display: flex;
-      justify-content: space-between;
       width: 100%;
       border: 1px solid rgb(209, 17, 17);
       padding: 5px;
@@ -140,14 +138,26 @@ body {
         font-size: 17px;
         margin: 0 20px;
       }
+
+      .first-row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .second-row {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+
     }
 
     h1 {
-      margin: 15px;
+      margin: 25px;
     }
 
     h3 {
-      margin-bottom: 75px;
+      margin-bottom: 25px;
     }
 
     p {
@@ -159,7 +169,7 @@ body {
 
 .ribbon {
   width: 100%;
-  height: 90px;
+  height: 80px;
   background: #61dafb;
   display: flex;
   justify-content: flex-end;
@@ -169,7 +179,7 @@ body {
 
   .logo {
     width: 90px;
-    height: 80px;
+    height: 70px;
     background-color: yellow;
     position: absolute;
     top: 0;
@@ -180,7 +190,7 @@ body {
     overflow: hidden;
 
     img {
-      height: 100px;
+      height: 85px;
     }
   }
 
@@ -191,23 +201,6 @@ body {
   }
 }
 
-
-.stat {
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
-  border: 1px solid rgb(209, 17, 17);
-  padding: 5px;
-  font-family: monospace;
-  font-size: 20px;
-  font-weight: 100;
-  color: blue;
-  margin: 5px 0;
-
-  p {
-    margin: 0 20px;
-  }
-}
 
 .filter {
   p {
@@ -363,7 +356,7 @@ input {
   height: 320px;
   background-color: #b9f196;
   overflow: auto;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 
   .client {
     width: 100%;
@@ -556,8 +549,38 @@ input {
 
   input {
     width: 40%;
-    text-align: right;
+    text-align: left;
     justify-content: flex-start;
   }
+}
 
+.stat2 {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid red;
+  border-radius: 10px;
+  gap: 40px;
+  width: 80vw;
+
+  p{
+    font-size: 17px;
+    font-weight: 400;
+    margin: 5px;
+    color: blue;
+    span {
+      margin: 0 10px;
+    }
+  }
+  
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+  }
+}
+
+.list-buttons {
+  display: flex;
+  gap: 20px;
 }

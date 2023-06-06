@@ -1,22 +1,31 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-
-// const CLIENTS_URL = 'http://localhost:3003/stat';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 
-// export default function useStat() {
+const STAT_URL = 'http://localhost:3003/stat';
 
-//     const [clients, setClient] = useState(null);
 
-//     useEffect(() => {
-//         axios.get(CLIENTS_URL)
-//             .then(res => {
-//                 console.log('Initial Rendering Stat', res.data.result );
-//                 setClient(res.data.result);
-//             }
-//             )
-//     },[]);
-    
-//     return [clients, setClient];
+export default function useStat() {
 
-// }
+    const [stat, setStat] = useState(null);
+    const [lastUpdateStat, setLastUpdateStat] = useState(Date.now());
+
+    useEffect(() => {
+        axios.get(STAT_URL)
+            .then(res => {
+                setStat(res.data);
+            }
+            );
+            
+    },[]);
+
+    useEffect(() => {
+        axios.get(STAT_URL)
+            .then(res => {
+                setStat(res.data);
+            }
+            );       
+    },[lastUpdateStat]);
+
+    return [stat, setLastUpdateStat];
+}

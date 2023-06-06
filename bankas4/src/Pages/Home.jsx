@@ -1,4 +1,4 @@
-import Stat from '../Components/Stat1';
+import Stat1 from '../Components/Stat1';
 import old from '../images/old.jpg';
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
         <img src={old} alt="home page" />
       </div>
       <div className='home-right'>
-        <Stat />
+        <Stat1 />
         <h1>Saugokite pinigus musu banke!</h1>
         <h3>Ir jusu senatve bus pilnai aprupinta!</h3>
         <h5>Zemiau susipažinkite su musu taisiklemys:</h5>

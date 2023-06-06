@@ -2,10 +2,10 @@ import { useContext, useState } from 'react';
 import axios from 'axios';
 import { Store } from '../Store';
 import noimage from '../images/no-photo.png';
-// import ModalDelete from './Modal/ModalDelete';
 
 
-export default function Client({ setMessage, client, setModalEnterActive, setModalDeleteActive, setModalClient, setModalAddActive, setModalNotDeleteActive, setModalDeductActive, setModalNotDeductActive, setTransaction, setModalBlockActive, setModalEditActive, setModalMessageActive }) {
+
+export default function Client({ setMessage, client, setModalEnterActive, setModalDeleteActive, setModalClient, setModalAddActive, setModalNotDeleteActive, setModalDeductActive, setModalNotDeductActive, setTransaction, setModalBlockActive, setModalEditActive, setModalMessageActive, setModalAddBigActive }) {
 
     const [text1, setText1] = useState('0.00');
 
@@ -19,37 +19,48 @@ export default function Client({ setMessage, client, setModalEnterActive, setMod
 
 
     const addSum = id => {
+        const addValue = Number(text1);
         if (client.status === 2) {
             setMessage(<span>You can't do any operations with blocked account!</span>);
             setModalMessageActive(true);
             setText1('0.00');
             return;
-        } else if (!isNaN(Number(text1))) {
-            setModalClient(client);
-            axios.put('http://localhost:3003/clients/addfunds/' + id, { funds: text1 })
-                .then(setLastUpdate(Date.now()));
-            setTransaction(Number(text1).toFixed(2));
-            setModalAddActive(true);
+        } else if (!isNaN(addValue)) {
+            if (addValue > 1000) {
+                setModalClient(client);
+                setTransaction(addValue.toFixed(2));
+                setModalAddBigActive(true);
+
+                return;
+            } else {
+                setModalClient(client);
+                axios.put('http://localhost:3003/clients/addfunds/' + id, { funds: text1 })
+                    .then(setLastUpdate(Date.now()));
+                setTransaction(addValue.toFixed(2));
+                setMessage(<span></span>)
+                setModalAddActive(true);
+            }
+
         } else {
             setModalEnterActive(true);
-
         }
         setText1('0.00');
     }
 
     const subtractSumm = id => {
+        const dedValue = Number(text1);
         if (client.status === 2) {
             setMessage(<span>You can't do any operations with blocked account!</span>);
             setModalMessageActive(true);
             setText1('0.00');
             return;
-        } else if (!isNaN(Number(text1))) {
+        } else if (!isNaN(dedValue)) {
             setModalClient(client);
-            const deduction = Number((client.amount - Number(text1)).toFixed(2))
+            const deduction = Number((client.amount - dedValue).toFixed(2))
             if (deduction >= 0) {
                 axios.put('http://localhost:3003/clients/subtructfunds/' + id, { funds: text1 })
                     .then(setLastUpdate(Date.now()));
-                setTransaction(Number(text1).toFixed(2));
+                setTransaction(dedValue.toFixed(2));
                 setModalDeductActive(true);
             } else {
                 setModalNotDeductActive(true);
@@ -68,8 +79,6 @@ export default function Client({ setMessage, client, setModalEnterActive, setMod
             setModalMessageActive(true);
             return;
         } else if (client.amount === 0) {
-            // setMessage(<ModalDelete setActive={setModalMessageActive} modalClient={modalClient} setModalClient={setModalClient}  />);
-            // setModalMessageActive(true);
             setModalClient(client);
             setModalDeleteActive(true);
         } else {
@@ -107,9 +116,7 @@ export default function Client({ setMessage, client, setModalEnterActive, setMod
                 <button type='button' className="red small" onClick={doDelAcc}>Close Acc</button>
                 <button type='button' className="pink small" onClick={blockUnblockAcc}>{client.status === 1 ? 'Block Acc' : 'Unblock Acc'}</button>
             </div>
-            <button type='button' className="blue small" onClick={editAcc}>Edit Acc</button>
-            {/* <ModalBlock active={modalBlockActive} setActive={setModalBlockActive} client={client} />
-            <ModalEdit active={modalEditActive} setActive={setModalEditActive} client={client} /> */}
+            <button type='button' className="blue small" onClick={editAcc}>Edit User</button>
         </div>
     );
 }

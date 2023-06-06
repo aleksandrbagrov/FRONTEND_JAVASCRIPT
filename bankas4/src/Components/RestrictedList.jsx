@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import Stat from './Stat1';
 import AccountsFilter from './AccountsFilter';
 import { Store } from '../Store';
 import RestrictedClient from './RestrictedClient';
+import Stat2 from './Stat2';
 
 function RestrictedList() {
 
@@ -12,7 +12,7 @@ function RestrictedList() {
     return (
         <div className="App">
             <header className="App-header">
-                <Stat />
+                <Stat2 />
                 <AccountsFilter />
                 <div className='clients-header restricted'>
                     <div className='name shot'>Name</div>
