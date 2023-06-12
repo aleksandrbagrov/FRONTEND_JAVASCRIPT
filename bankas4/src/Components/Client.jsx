@@ -30,7 +30,7 @@ export default function Client({ setMessage, client, setModalEnterActive, setMod
                 setModalClient(client);
                 setTransaction(addValue.toFixed(2));
                 setModalAddBigActive(true);
-
+                setText1('0.00');
                 return;
             } else {
                 setModalClient(client);

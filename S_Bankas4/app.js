@@ -36,14 +36,49 @@ connection.connect();
 // FROM table_name;
 app.get('/stat', (req, res) => {
     const sql = `
-        SELECT id, amount
+        SELECT id, amount, file
         FROM clents
     `;
     connection.query(sql, (err, result) => {
         if (err) throw err
+
+        const clientsNumber = result.length;
+        const totalClientsFunds = result.reduce((acc, c) => c.amount + acc, 0);
+        const clientsWithoutPhoto = result.filter(c => c.file === null).length;
+        const clientMinus = result.filter(c => c.amount < 0).length;
+        const clientWithFunds = result.filter(c => c.amount > 0).length;
+        const clientsWithoutFunds = result.filter(c => c.amount === 0).length;
+        const averageBalance = (totalClientsFunds / clientsNumber).toFixed(2);
+
+
         res.json({
             status: 'ok',
-            result
+            clientsNumber,
+            totalClientsFunds,
+            clientsWithoutPhoto,
+            clientMinus,
+            clientWithFunds,
+            clientsWithoutFunds,
+            averageBalance,
+        });
+    });
+});
+
+//DEDUCT TAX FROM ALL CLIENTS
+app.put('/clients/tax/', (req, res) => {
+    const sql = `
+        UPDATE clents
+        SET amount = amount - ?
+    `;
+    connection.query(sql, [req.body.tax], (err, _) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            showMessage: {
+                type: 'info',
+                title: 'Client',
+                text: 'The clients balance redused by air tax!'
+            },
         });
     });
 });
@@ -233,89 +268,89 @@ app.put('/clients/edit/:id', (req, res) => {
 });
 
 
-// TYPES
+// // TYPES
 
-// SELECT column1, column2, ...
-// FROM table_name;
-app.get('/types', (req, res) => {
-    const sql = `
-        SELECT t.id, t.title, p.id AS park, p.title AS parkTitle
-        FROM types AS t
-        LEFT JOIN parks AS p
-        ON t.park = p.id
-        ORDER BY p.title, t.title
-    `;
-    connection.query(sql, (err, result) => {
-        if (err) throw err
-        res.json({
-            status: 'ok',
-            result
-        });
-    });
-});
+// // SELECT column1, column2, ...
+// // FROM table_name;
+// app.get('/types', (req, res) => {
+//     const sql = `
+//         SELECT t.id, t.title, p.id AS park, p.title AS parkTitle
+//         FROM types AS t
+//         LEFT JOIN parks AS p
+//         ON t.park = p.id
+//         ORDER BY p.title, t.title
+//     `;
+//     connection.query(sql, (err, result) => {
+//         if (err) throw err
+//         res.json({
+//             status: 'ok',
+//             result
+//         });
+//     });
+// });
 
 
 
-// INSERT INTO table_name (column1, column2, column3, ...)
-// VALUES (value1, value2, value3, ...);
-app.post('/types', (req, res) => {
-    const sql = `
-    INSERT INTO types (title, park)
-    VALUES (?, ?)
-    `;
-    connection.query(sql, [req.body.title, req.body.park], (err, _) => {
-        if (err) throw err
-        res.json({
-            status: 'ok',
-            showMessage: {
-                type: 'ok',
-                title: 'Types',
-                text: 'New type was created!'
-            }
-        });
-    });
-});
+// // INSERT INTO table_name (column1, column2, column3, ...)
+// // VALUES (value1, value2, value3, ...);
+// app.post('/types', (req, res) => {
+//     const sql = `
+//     INSERT INTO types (title, park)
+//     VALUES (?, ?)
+//     `;
+//     connection.query(sql, [req.body.title, req.body.park], (err, _) => {
+//         if (err) throw err
+//         res.json({
+//             status: 'ok',
+//             showMessage: {
+//                 type: 'ok',
+//                 title: 'Types',
+//                 text: 'New type was created!'
+//             }
+//         });
+//     });
+// });
 
-// DELETE FROM table_name WHERE condition;
-app.delete('/types/:id', (req, res) => {
-    const sql = `
-        DELETE FROM types
-        WHERE id = ?
-    `;
-    connection.query(sql, [req.params.id], (err, _) => {
-        if (err) throw err
-        res.json({
-            status: 'ok',
-            showMessage: {
-                type: 'info',
-                title: 'Types',
-                text: 'The type was deleted!'
-            }
-        });
-    });
-});
+// // DELETE FROM table_name WHERE condition;
+// app.delete('/types/:id', (req, res) => {
+//     const sql = `
+//         DELETE FROM types
+//         WHERE id = ?
+//     `;
+//     connection.query(sql, [req.params.id], (err, _) => {
+//         if (err) throw err
+//         res.json({
+//             status: 'ok',
+//             showMessage: {
+//                 type: 'info',
+//                 title: 'Types',
+//                 text: 'The type was deleted!'
+//             }
+//         });
+//     });
+// });
 
-// UPDATE table_name
-// SET column1 = value1, column2 = value2, ...
-// WHERE condition;
-app.put('/types/:id', (req, res) => {
-    const sql = `
-        UPDATE types
-        SET title = ?, park = ?
-        WHERE id = ?
-    `;
-    connection.query(sql, [req.body.title, req.body.park, req.params.id], (err, _) => {
-        if (err) throw err
-        res.json({
-            status: 'ok',
-            showMessage: {
-                type: 'info',
-                title: 'Types',
-                text: 'The type was updated!'
-            }
-        });
-    });
-});
+// // UPDATE table_name
+// // SET column1 = value1, column2 = value2, ...
+// // WHERE condition;
+// app.put('/types/:id', (req, res) => {
+//     const sql = `
+//         UPDATE types
+//         SET title = ?, park = ?
+//         WHERE id = ?
+//     `;
+//     connection.query(sql, [req.body.title, req.body.park, req.params.id], (err, _) => {
+//         if (err) throw err
+//         res.json({
+//             status: 'ok',
+//             showMessage: {
+//                 type: 'info',
+//                 title: 'Types',
+//                 text: 'The type was updated!'
+//             }
+//         });
+//     });
+// });
 
 
 // SELECT COUNT(CustomerID), Country

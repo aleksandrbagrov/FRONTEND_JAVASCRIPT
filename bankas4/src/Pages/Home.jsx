@@ -1,12 +1,12 @@
 import Stat1 from '../Components/Stat1';
-import old from '../images/old.jpg';
+import family from '../images/family.jpg';
 
 export default function Home() {
 
   return (
     <div className='home'>
       <div className='home-left'>
-        <img src={old} alt="home page" />
+        <img src={family} alt="home page" />
       </div>
       <div className='home-right'>
         <Stat1 />
